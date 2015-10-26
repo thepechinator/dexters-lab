@@ -1,7 +1,10 @@
 require('./../sass/main.scss');
 
 let TweenMax = require('gsap');
+let Particle = require('effects/particle');
 
+let particle = new Particle();
+particle.createEffect();
 
 //Pure JS, completely customizable preloader from GreenSock.
 //Once you create an instance like var preloader = new GSPreloader(), call preloader.active(true) to open it, preloader.active(false) to close it, and preloader.active() to get the current status. Only requires TweenLite and CSSPlugin (http://www.greensock.com/gsap/)

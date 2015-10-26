@@ -33,42 +33,45 @@ module.exports = {
             { test: /\.woff$/, loader: "url-loader?prefix=font/&limit=5000&mimetype=application/font-woff" },
             { test: /\.ttf$/, loader: "file-loader?prefix=font/" },
             { test: /\.eot$/, loader: "file-loader?prefix=font/" },
-            { test: /\.svg$/, loader: "file-loader?prefix=font/" }
-        ],
-        noParse: [
+            { test: /\.svg$/, loader: "file-loader?prefix=font/" },
 
+            // From specific requires, indicate what we want 
+            // to attach to the window scope.
+            { test: /jquery\.js$/, loader: 'expose?$' },
+            { test: /jquery\.js$/, loader: 'expose?jQuery' }
+        ]
+    },
+    resolve: {
+        // Prefer to keep this minimal as possible, as the more
+        // paths webpack has to look through will slow down the
+        // compile process.
+        modulesDirectories: [
+            "",
+            "src/js",
+            "node_modules",
+            "bower_components"
         ],
-        resolve: {
-            // Prefer to keep this minimal as possible, as the more
-            // paths webpack has to look through will slow down the
-            // compile process.
-            modulesDirectories: [
-                "",
-                "node_modules",
-                "bower_components"
-            ]
-            // This is somewhat trippy. Because webpack can't automatically
-            // determine the main js files to import for underscore and backbone,
-            // we need to help it out here and create aliases mapping that
-            // relationship. That way, we can just do require('underscore') and
-            // require('backbone') in our code. Or, in the ES6 way,
-            // 'import "backbone"' and 'import "underscore"'
-            // alias: {
-            //     jquery: 'jquery/dist/jquery',
-            //     waypoints: 'jquery-waypoints/lib/jquery.waypoints',
-            //     'waypoints.sticky': 'jquery-waypoints/lib/shortcuts/sticky',
-            //     underscore: 'underscore/underscore',
-            //     backbone: 'backbone/backbone',
-            //     'backbone.wreqr': 'backbone.wreqr/lib/backbone.wreqr',
-            //     'backbone.babysitter': 'backbone.babysitter/lib/backbone.babysitter',
-            //     'backbone.marionette': 'backbone.marionette/lib/backbone.marionette',
-            //     nouislider: 'nouislider/distribute/nouislider',
-            //     d3: 'd3/d3',
-            //     breakpoints: 'js-breakpoints/breakpoints',
-            //     machina: 'machina/lib/machina',
-            //     modernizr: 'modernizr/modernizr',
-            //     fastclick: 'fastclick/lib/fastclick'
-            // }
+        // This is somewhat trippy. Because webpack can't automatically
+        // determine the main js files to import for underscore and backbone,
+        // we need to help it out here and create aliases mapping that
+        // relationship. That way, we can just do require('underscore') and
+        // require('backbone') in our code. Or, in the ES6 way,
+        // 'import "backbone"' and 'import "underscore"'
+        alias: {
+            jquery: 'jquery/dist/jquery'
+            // waypoints: 'jquery-waypoints/lib/jquery.waypoints',
+            // 'waypoints.sticky': 'jquery-waypoints/lib/shortcuts/sticky',
+            // underscore: 'underscore/underscore',
+            // backbone: 'backbone/backbone',
+            // 'backbone.wreqr': 'backbone.wreqr/lib/backbone.wreqr',
+            // 'backbone.babysitter': 'backbone.babysitter/lib/backbone.babysitter',
+            // 'backbone.marionette': 'backbone.marionette/lib/backbone.marionette',
+            // nouislider: 'nouislider/distribute/nouislider',
+            // d3: 'd3/d3',
+            // breakpoints: 'js-breakpoints/breakpoints',
+            // machina: 'machina/lib/machina',
+            // modernizr: 'modernizr/modernizr',
+            // fastclick: 'fastclick/lib/fastclick'
         }
     },
     plugins: [
