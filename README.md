@@ -33,46 +33,37 @@ Outline
         - No more .bind() or .apply() or self = this to achieve this.
     - default parameters
         - ES5 way
-            ```
-            function(param1, param2) {
-
-            }
+                function(param1, param2) {}
         - es6 way
-            ```
-            function(param1, param2=defaultValue) {}
+                function(param1, param2=defaultValue) {}
     - classes
     - enhanced object literals
         - dynamic properties, no need for function, other things
-            ```
-            let obj = {
-                // dynamic properties
-                ['darth' + 'vader']: 'I am your father',
-                // define functions without 'function' keyword
-                skywalker() {
-                    return 'NOOOOOOO';
+                let obj = {
+                    // dynamic properties
+                    ['darth' + 'vader']: 'I am your father',
+                    // define functions without 'function' keyword
+                    skywalker() {
+                        return 'NOOOOOOO';
+                    }
                 }
-            }
     - rest
     - spread
         - before in ES5
-            ```
-            function myFunction(x, y, z) {}
-            var args = [0, 1, 2]
-            myFunction.apply(null, args);
+                function myFunction(x, y, z) {}
+              var args = [0, 1, 2]
+              myFunction.apply(null, args);
         - spread example
-            ```
-            function myFunction(x, y, z) {}
-            var args = [0, 1, 2];
-            myFunction(...args);
+                function myFunction(x, y, z) {}
+                var args = [0, 1, 2];
+                myFunction(...args);
         - array example
-            ```
-            let arr1 = [0, 1, 2];
-            let arr2 = [3, 4, 5];
-            arr1.push(...arr2);
+                let arr1 = [0, 1, 2];
+                let arr2 = [3, 4, 5];
+                arr1.push(...arr2);
         - apply for new
-            ```
-            var fields = [1, 2, 3]
-            var myClass = new MyClass(...fields);
+                var fields = [1, 2, 3]
+                var myClass = new MyClass(...fields);
     - splitters (or whatever they are called)
     - modules
 - Moderate
