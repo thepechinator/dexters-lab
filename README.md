@@ -48,6 +48,20 @@ Outline
                     }
                 }
     - rest
+        No more arguments nonsense.
+        - in ES5
+                store.add = function(category) {
+                    var items = [].slice.call(arguments, 1);
+                    items.forEach(function(item) {
+                        store.aisle[category].push(item);
+                    });
+                };
+        - in ES6
+                store.add = function(category, ...items) {
+                    items.forEach(function(item) {
+                        store.aisle[category].push(item);
+                    });
+                };
     - spread
         - before in ES5
                 function myFunction(x, y, z) {}
@@ -64,7 +78,6 @@ Outline
         - apply for new
                 var fields = [1, 2, 3]
                 var myClass = new MyClass(...fields);
-    - splitters (or whatever they are called)
     - modules
 - Moderate
     - New primitive type: Symbol
