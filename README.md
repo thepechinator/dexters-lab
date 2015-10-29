@@ -33,9 +33,13 @@ Outline
         - No more .bind() or .apply() or self = this to achieve this.
     - default parameters
         - ES5 way
-                function(param1, param2) {}
+        ```
+        function(param1, param2) {}
+        ```
         - es6 way
-                function(param1, param2=defaultValue) {}
+        ```
+        function(param1, param2=defaultValue) {}
+        ```
     - classes
     - enhanced object literals
         - dynamic properties, no need for function, other things
@@ -61,29 +65,41 @@ Outline
         };
         ```
         - in ES6
-                store.add = function(category, ...items) {
-                    items.forEach(function(item) {
-                        store.aisle[category].push(item);
-                    });
-                };
+        ```javascript
+        store.add = function(category, ...items) {
+            items.forEach(function(item) {
+                store.aisle[category].push(item);
+            });
+        };
+        ```
     - spread
         - before in ES5
-                function myFunction(x, y, z) {}
-              var args = [0, 1, 2]
-              myFunction.apply(null, args);
+        ```javascript
+        function myFunction(x, y, z) {}
+        var args = [0, 1, 2]
+        myFunction.apply(null, args);
+        ```
         - spread example
-                function myFunction(x, y, z) {}
-                var args = [0, 1, 2];
-                myFunction(...args);
+        ```javascript
+        function myFunction(x, y, z) {}
+        var args = [0, 1, 2];
+        myFunction(...args);
+        ```
         - array example
-                let arr1 = [0, 1, 2];
-                let arr2 = [3, 4, 5];
-                arr1.push(...arr2);
+        ```javascript
+        let arr1 = [0, 1, 2];
+        let arr2 = [3, 4, 5];
+        arr1.push(...arr2);
+        ```
         - apply for new
-                var fields = [1, 2, 3]
-                var myClass = new MyClass(...fields);
+        ```javascript
+        var fields = [1, 2, 3]
+        var myClass = new MyClass(...fields);
+        ```
     - modules
-            import MyClass from 'packages/MyClass';
+    ```javascript
+    import MyClass from 'packages/MyClass';
+    ```
 - Moderate
     - New primitive type: Symbol
         - Guaranteed unique reference
