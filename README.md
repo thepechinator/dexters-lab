@@ -79,8 +79,7 @@ Outline
                 var fields = [1, 2, 3]
                 var myClass = new MyClass(...fields);
     - modules
-        ```
-        import MyClass from 'packages/MyClass';
+            import MyClass from 'packages/MyClass';
 - Moderate
     - New primitive type: Symbol
         - Guaranteed unique reference
