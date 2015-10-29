@@ -39,23 +39,27 @@ Outline
     - classes
     - enhanced object literals
         - dynamic properties, no need for function, other things
-                let obj = {
-                    // dynamic properties
-                    ['darth' + 'vader']: 'I am your father',
-                    // define functions without 'function' keyword
-                    skywalker() {
-                        return 'NOOOOOOO';
-                    }
-                }
+        ```javascript
+        let obj = {
+            // dynamic properties
+            ['darth' + 'vader']: 'I am your father',
+            // define functions without 'function' keyword
+            skywalker() {
+                return 'NOOOOOOO';
+            }
+        }
+        ```
     - rest
         No more arguments nonsense.
         - in ES5
-                store.add = function(category) {
-                    var items = [].slice.call(arguments, 1);
-                    items.forEach(function(item) {
-                        store.aisle[category].push(item);
-                    });
-                };
+        ```javascript
+        store.add = function(category) {
+            var items = [].slice.call(arguments, 1);
+            items.forEach(function(item) {
+                store.aisle[category].push(item);
+            });
+        };
+        ```
         - in ES6
                 store.add = function(category, ...items) {
                     items.forEach(function(item) {
