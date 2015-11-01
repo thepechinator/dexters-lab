@@ -4,8 +4,6 @@
 var webpack = require("webpack");
 var path = require('path');
 
-console.log('path.resolve(__dirname, "./bower_components")', path.resolve(__dirname, "./bower_components"))
-
 var settings = {
     entry: "./src/js/main.js",
     output: {
@@ -40,7 +38,15 @@ var settings = {
             // From specific requires, indicate what we want
             // to attach to the window scope.
             { test: /jquery\.js$/, loader: 'expose?$' },
-            { test: /jquery\.js$/, loader: 'expose?jQuery' }
+            { test: /jquery\.js$/, loader: 'expose?jQuery' },
+
+            {
+              test: /\.(nunj|nunjucks|html)$/,
+              loader: 'nunjucks-loader',
+              query: {
+                  config: __dirname + '/nunjucks.config.js'
+              }
+            }
         ]
     },
     sassLoader: {
@@ -66,11 +72,11 @@ var settings = {
             jquery: 'jquery/dist/jquery',
             // waypoints: 'jquery-waypoints/lib/jquery.waypoints',
             // 'waypoints.sticky': 'jquery-waypoints/lib/shortcuts/sticky',
-            underscore: 'underscore/underscore'
-            // backbone: 'backbone/backbone',
-            // 'backbone.wreqr': 'backbone.wreqr/lib/backbone.wreqr',
-            // 'backbone.babysitter': 'backbone.babysitter/lib/backbone.babysitter',
-            // 'backbone.marionette': 'backbone.marionette/lib/backbone.marionette',
+            underscore: 'underscore/underscore',
+            backbone: 'backbone/backbone',
+            'backbone.wreqr': 'backbone.wreqr/lib/backbone.wreqr',
+            'backbone.babysitter': 'backbone.babysitter/lib/backbone.babysitter',
+            'backbone.marionette': 'backbone.marionette/lib/backbone.marionette'
             // nouislider: 'nouislider/distribute/nouislider',
             // d3: 'd3/d3',
             // breakpoints: 'js-breakpoints/breakpoints',

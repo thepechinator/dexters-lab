@@ -5,76 +5,12 @@
   <title>Document</title>
 </head>
 <body>
-
-  <!-- Should be a partial -->
-  <div class="row js-example">
-    <div class="column small-8">
-      <ul class="tabs" data-tab>
-        <li class="tab-title active"><a href="#panel1">Live ES6 Editor</a></li>
-        <li class="tab-title"><a href="#panel2">Compiled JS</a></li>
-      </ul>
-      <div class="tabs-content">
-        <div class="content active" id="panel1">
-<!-- This has to remain fixed to the left in the editor. -->
-<textarea class="js-demo-text" style="display: none;">
-let something='yes it is';</textarea>
-        </div>
-        <div class="content" id="panel2">
-<!-- This has to remain fixed to the left in the editor. -->
-<textarea class="js-demo-compiled" style="display: none;">
-compiled JS</textarea>
-        </div>
-      </div>
-    </div>
-
-    <div class="column small-4">
-      <div class="row">
-        <textarea class="js-output">hey there</textarea>
-      </div>
-      <div class="row js-console">
-        the console
-      </div>
-    </div>
+  <div class="js-stage">
   </div>
-
-  <!-- Should be a partial -->
-  <div class="row js-example">
-    <div class="column small-8">
-      <ul class="tabs" data-tab>
-        <li class="tab-title active"><a href="#panel3">Live ES6 Editor</a></li>
-        <li class="tab-title"><a href="#panel4">Compiled JS</a></li>
-      </ul>
-      <div class="tabs-content">
-        <div class="content active" id="panel3">
-<!-- This has to remain fixed to the left in the editor. -->
-<textarea class="js-demo-text" style="display: none;">
-let myVariable = 'yes indeed';
-function blah() {
-  console.log('yeah');
-}
-blah();</textarea>
-        </div>
-        <div class="content" id="panel4">
-<!-- This has to remain fixed to the left in the editor. -->
-<textarea class="js-demo-compiled" style="display: none;">
-compiled JS</textarea>
-        </div>
-      </div>
-    </div>
-
-    <div class="column small-4">
-      <div class="row">
-        <textarea class="js-output">hey there</textarea>
-      </div>
-      <div class="row js-console">
-        the console
-      </div>
-    </div>
-  </div>
-
   <!-- <p><strong>Click to open/close the preloader.</strong><br>Completely customizable (colors, radius, number of dots, size, etc.).<br>One JavaScript call opens or closes the preloader elegantly.</p> -->
 
-  <script src="node_modules/babel-core/browser.js"></script>
+  <script src="node_modules/babel-polyfill/dist/polyfill.min.js"></script>
+  <script src="node_modules/babel-core/browser.min.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

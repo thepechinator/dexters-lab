@@ -1,13 +1,24 @@
 // third party stuff
-require('vendors');
-require('codemirror/lib/codemirror.css');
+import 'vendors';
+import 'codemirror/lib/codemirror.css';
 
-let CodeMirror = require('codemirror/lib/codemirror');
+import CodeMirror from 'codemirror/lib/codemirror';
 
-require('codemirror/mode/javascript/javascript');
-require('codemirror/mode/htmlmixed/htmlmixed');
+import 'codemirror/mode/javascript/javascript';
+import 'codemirror/mode/htmlmixed/htmlmixed';
 
-require('sass/main.scss');
+import 'sass/main.scss';
+
+import 'backbone.marionette';
+
+// Need to override this to make it work with templates.
+Backbone.Marionette.Renderer.render = function( template, data ) {
+  return template.render( data );
+};
+
+import Stage from 'views/stage';
+let stage = new Stage({el: $('.js-stage')});
+stage.render();
 
 import BabelREPL from 'babel/repl';
 

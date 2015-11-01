@@ -1,0 +1,8 @@
+{% from './example.nunj' import 'build_example' %}
+
+{{ build_example("let something='yes it is';") }}
+{{ build_example("let myVariable = 'yes indeed';
+function blah() {
+  console.log('yeah');
+}
+blah();") }}
