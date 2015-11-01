@@ -185,7 +185,13 @@ Outline
 - Moderate
     - New primitive type: Symbol
         - Guaranteed unique reference
+        ```javascript
+        let mySymbol = Symbol('some descriptor');
+        ```
     - iterators, for of
+    ```javascript
+    
+    ```
     - Generators (\*function)
     - destructuring
         - binding using pattern matching
@@ -194,6 +200,7 @@ Outline
 - Advanced
     - Reflect (proxies)
 - Why are we using it?
+
 
 - Resources
     - http://es6-features.org/

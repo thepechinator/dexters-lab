@@ -4,7 +4,7 @@
 var webpack = require("webpack");
 var path = require('path');
 
-module.exports = {
+var settings = {
     entry: "./src/js/main.js",
     output: {
         path: __dirname + "/public/js",
@@ -20,7 +20,7 @@ module.exports = {
             // - Traceur (Google's implementation)
             // https://github.com/google/traceur-compiler
             {
-                test: /\.js$/, loader: "babel-loader", 
+                test: /\.js$/, loader: "babel-loader",
                 exclude: /node_modules|bower_components/
             },
 
@@ -35,7 +35,7 @@ module.exports = {
             { test: /\.eot$/, loader: "file-loader?prefix=font/" },
             { test: /\.svg$/, loader: "file-loader?prefix=font/" },
 
-            // From specific requires, indicate what we want 
+            // From specific requires, indicate what we want
             // to attach to the window scope.
             { test: /jquery\.js$/, loader: 'expose?$' },
             { test: /jquery\.js$/, loader: 'expose?jQuery' }
@@ -58,10 +58,10 @@ module.exports = {
         // require('backbone') in our code. Or, in the ES6 way,
         // 'import "backbone"' and 'import "underscore"'
         alias: {
-            jquery: 'jquery/dist/jquery'
+            jquery: 'jquery/dist/jquery',
             // waypoints: 'jquery-waypoints/lib/jquery.waypoints',
             // 'waypoints.sticky': 'jquery-waypoints/lib/shortcuts/sticky',
-            // underscore: 'underscore/underscore',
+            underscore: 'underscore/underscore'
             // backbone: 'backbone/backbone',
             // 'backbone.wreqr': 'backbone.wreqr/lib/backbone.wreqr',
             // 'backbone.babysitter': 'backbone.babysitter/lib/backbone.babysitter',
@@ -77,5 +77,15 @@ module.exports = {
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin()
-    ]
+    ],
+    devtool: 'source-map'
 };
+
+// settings.plugins.push(
+//     new webpack.optimize.CommonsChunkPlugin({ // this one only pulls common stuff from vendors and main
+//         name: 'vendors',
+//         chunks: ['main']
+//     })
+// );
+
+module.exports = settings;
