@@ -1,8 +1,24 @@
 {% from './example.nunj' import 'build_example' %}
 
-{{ build_example("let something='yes it is';") }}
-{{ build_example("let myVariable = 'yes indeed';
+{% call build_example() %}
+let something='yes it is';
+{% endcall %}
+
+{% call build_example() %}
+let myVariable = 'yes indeed';
 function blah() {
   console.log('yeah');
 }
-blah();") }}
+blah();
+{% endcall %}
+
+
+{% call build_example() %}
+class MyClass {
+  constructor() {
+    this.myProp = 'it works!';
+  }
+}
+
+console.log(new MyClass().myProp);
+{% endcall %}

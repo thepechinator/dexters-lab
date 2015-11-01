@@ -1,4 +1,4 @@
-{% macro build_example(code) %}
+{% macro build_example() %}
 {% set id1 = uuid.next().value %}
 {% set id2 = uuid.next().value %}
 
@@ -11,8 +11,7 @@
     <div class="tabs-content">
       <div class="content active" id="panel-{{id1}}">
 <!-- This has to remain fixed to the left in the editor. -->
-<textarea class="js-demo-text" style="display: none;">
-{{code}}</textarea>
+<textarea class="js-demo-text" style="display: none;">{{ caller() }}</textarea>
       </div>
       <div class="content" id="panel-{{id2}}">
 <!-- This has to remain fixed to the left in the editor. -->

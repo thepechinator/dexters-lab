@@ -63,10 +63,12 @@ export default class BabelREPL {
     this.clear();
 
     try {
+      // console.log('code', code);
       transformed = babel.transform(code, {});
       this.editorCompiled.setValue(transformed.code);
       this.evaluate(transformed.code);
     } catch (err) {
+      // console.log('error thrown');
       // don't throw it.. just output it
       this.$output.text(err.message);
     }
