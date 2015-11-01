@@ -2,7 +2,7 @@
 {% set id1 = uuid.next().value %}
 {% set id2 = uuid.next().value %}
 
-<div class="row js-example">
+<div class="row block-normal js-example">
   <div class="column small-8">
     <ul class="tabs" data-tab>
       <li class="tab-title active"><a href="#panel-{{id1}}">Live ES6 Editor</a></li>
@@ -24,10 +24,14 @@ compiled JS</textarea>
 
   <div class="column small-4">
     <div class="row">
-      <textarea class="js-output">This is where HTML output will appear.</textarea>
+      <div class="example-output js-output">
+        This is where HTML output will appear.
+      </div>
     </div>
-    <div class="row js-console">
-      The personal console for this example.
+    <div class="row">
+      <div class="example-console js-console">
+        The personal console for this example.
+      </div>
     </div>
   </div>
 </div>

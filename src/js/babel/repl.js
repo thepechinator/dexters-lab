@@ -14,20 +14,21 @@ export default class BabelREPL {
     this.$consoleReporter = this.$context.find('.js-console');
     this.$output = $context.find('.js-output');
 
-    console.log($context.find('.js-demo-compiled')[0]);
     this.editorCompiled = CodeMirror.fromTextArea($context.find('.js-demo-compiled')[0], {
       mode: "javascript",
       lineNumbers: true,
       matchBrackets: true,
       tabSize: 2,
-      readOnly: true
+      readOnly: true,
+      theme: 'vibrant-ink'
     });
 
     this.editor = CodeMirror.fromTextArea($context.find('.js-demo-text')[0], {
       mode: "javascript",
       lineNumbers: true,
       matchBrackets: true,
-      tabSize: 2
+      tabSize: 2,
+      theme: 'vibrant-ink'
     });
 
     // Compile what's already in there.
@@ -39,14 +40,14 @@ export default class BabelREPL {
   }
 
   refresh() {
-    console.log('refresh');
+    // console.log('refresh');
     this.editor.refresh();
     this.editorCompiled.refresh();
   }
 
   handleCodeChange(instance, changeObj) {
     this.compile(instance.getValue());
-    console.log('handleCodeChange!', instance.getValue());
+    // console.log('handleCodeChange!', instance.getValue());
   }
 
   clear() {

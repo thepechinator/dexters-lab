@@ -1,6 +1,7 @@
 // third party stuff
 import 'vendors';
 import 'codemirror/lib/codemirror.css';
+import 'codemirror/theme/vibrant-ink.css';
 
 import CodeMirror from 'codemirror/lib/codemirror';
 
