@@ -7,13 +7,32 @@ let CodeMirror = require('codemirror/lib/codemirror');
 require('codemirror/mode/javascript/javascript');
 require('codemirror/mode/htmlmixed/htmlmixed');
 
-require('./../sass/main.scss');
+require('sass/main.scss');
 
 import BabelREPL from 'babel/repl';
 
+// A good case for the weakmap, since we need to keep track of
+// what component holds. Alternatives would be to somehow
+// keep track of these relationships some other way, maybe
+// with some data-id or an array you need to loop through.
+let weakmap = new WeakMap();
 $('.js-example').each(function(index, el) {
-  new BabelREPL($(el));
+  let repl = new BabelREPL($(el));
+
+  // Assigning the jquery object won't work. You need to actually
+  // access the index.
+  weakmap.set($(this).find('.tabs')[0], repl);
 });
+
+$(document).foundation();
+
+$('.tabs').on('toggled', function (event, tab) {
+  weakmap.get($(tab).parent()[0]).refresh();
+});
+
+// for (let item of array) {
+//   item.refresh();
+// }
 
 // $('.js-demo-text').each(function(index, el) {
 //   CodeMirror.fromTextArea(el, {

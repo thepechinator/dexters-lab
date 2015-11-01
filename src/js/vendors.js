@@ -2,7 +2,6 @@
 // via a config.
 require('jquery');
 
-require('foundation/scss/foundation.scss');
 require('foundation/js/foundation/foundation');
 //require('foundation/js/foundation/foundation.abide.js');
 require('foundation/js/foundation/foundation.accordion');

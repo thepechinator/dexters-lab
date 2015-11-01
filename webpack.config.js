@@ -4,6 +4,8 @@
 var webpack = require("webpack");
 var path = require('path');
 
+console.log('path.resolve(__dirname, "./bower_components")', path.resolve(__dirname, "./bower_components"))
+
 var settings = {
     entry: "./src/js/main.js",
     output: {
@@ -40,6 +42,9 @@ var settings = {
             { test: /jquery\.js$/, loader: 'expose?$' },
             { test: /jquery\.js$/, loader: 'expose?jQuery' }
         ]
+    },
+    sassLoader: {
+      includePaths: [path.resolve(__dirname, "./bower_components")]
     },
     resolve: {
         // Prefer to keep this minimal as possible, as the more

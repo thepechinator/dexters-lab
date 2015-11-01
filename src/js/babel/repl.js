@@ -9,10 +9,20 @@ import CodeMirror from 'codemirror/lib/codemirror';
 // babel is provided in an external script tag
 export default class BabelREPL {
   constructor($context) {
-    // Still have to do this unfortunately.
     this.$context = $context;
-    this.$output = $context.find('.js-output');
+
     this.$consoleReporter = this.$context.find('.js-console');
+    this.$output = $context.find('.js-output');
+
+    console.log($context.find('.js-demo-compiled')[0]);
+    this.editorCompiled = CodeMirror.fromTextArea($context.find('.js-demo-compiled')[0], {
+      mode: "javascript",
+      lineNumbers: true,
+      matchBrackets: true,
+      tabSize: 2,
+      readOnly: true
+    });
+
     this.editor = CodeMirror.fromTextArea($context.find('.js-demo-text')[0], {
       mode: "javascript",
       lineNumbers: true,
@@ -28,24 +38,32 @@ export default class BabelREPL {
     this.editor.on('change', _.debounce(this.handleCodeChange, 500).bind(this));
   }
 
+  refresh() {
+    console.log('refresh');
+    this.editor.refresh();
+    this.editorCompiled.refresh();
+  }
+
   handleCodeChange(instance, changeObj) {
     this.compile(instance.getValue());
     console.log('handleCodeChange!', instance.getValue());
   }
 
   clear() {
-    this.$output.text('');
+    this.editorCompiled.setValue('');
+    this.$output.empty();
     this.$consoleReporter.empty();
   }
 
   compile(code) {
     let transformed;
 
-    // Clear out stuff.
+    // Clear our output and console each time we recompile.
     this.clear();
 
     try {
       transformed = babel.transform(code, {});
+      this.editorCompiled.setValue(transformed.code);
       this.evaluate(transformed.code);
     } catch (err) {
       // don't throw it.. just output it
