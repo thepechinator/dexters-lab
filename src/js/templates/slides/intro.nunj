@@ -4,23 +4,18 @@
   {# TODO: special effects or something #}
   <h1>ES6</h1>
 
-  <dl>
-    <dt class="text-large">What is it?</dt>
-    <dd class="text-normal">Definition Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nullam id dolor id nibh ultricies vehicula ut id elit.</dd>
+  <dl class="">
+    <dt class="text-large slide js-slide-child">What is it?</dt>
+    <dd class="text-normal slide js-slide-child">
+      ECMAScript 6 / ECMAScript 2015 : major update to language since ES5 (2009)
+      <span style="display: none;">EMCAScript is a trademarked scripting language. JavaScript is one implementation of it.</span>
+    </dd>
   </dl>
 
-  <dl>
+  <dl class="slide js-slide-child">
     <dt class="text-large">Where are we using it?</dt>
-    <dd class="text-normal">Definition Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nullam id dolor id nibh ultricies vehicula ut id elit.</dd>
+    <dd class="text-normal">
+      USN Styleguide and Static's responsive redesign code.
+    </dd>
   </dl>
-
-  {% call build_example() %}
-class MyClass {
-  constructor() {
-    this.myProp = 'it works!';
-  }
-}
-
-console.log(new MyClass().myProp);
-  {% endcall %}
 {% endblock %}

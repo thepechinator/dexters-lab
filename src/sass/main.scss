@@ -8,3 +8,15 @@
 @import "modules/block";
 @import "modules/editor";
 @import "modules/tabs";
+
+.deck-status {
+  bottom: 0;
+  position: fixed;
+  text-align: right;
+}
+// Otherwise, our transitions won't work like how we expect them to.
+.slide.deck-child-current {
+  position: relative;
+  left: auto;
+  top: auto;
+}

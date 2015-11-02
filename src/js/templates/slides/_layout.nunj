@@ -1,4 +1,4 @@
-<div class="row slide js-slide">
+<div class="row slide js-slide-parent">
   {% block content %}
 
   {% endblock %}

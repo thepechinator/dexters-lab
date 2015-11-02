@@ -5,7 +5,9 @@
 
   <dl>
     <dt class="text-large">What is it?</dt>
-    <dd class="text-normal">Definition Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nullam id dolor id nibh ultricies vehicula ut id elit.</dd>
+    <dd class="text-normal">
+      ECMAScript 6
+    </dd>
   </dl>
 
   <dl>
