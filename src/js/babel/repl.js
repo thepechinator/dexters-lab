@@ -65,10 +65,13 @@ export default class BabelREPL {
     try {
       // console.log('code', code);
       transformed = babel.transform(code, {});
+      //console.log('past transform');
       this.editorCompiled.setValue(transformed.code);
+      //console.log('past setValue');
       this.evaluate(transformed.code);
+      //console.log('past evaluate');
     } catch (err) {
-      // console.log('error thrown');
+      // console.log('ERROR thrown', transformed.code);
       // don't throw it.. just output it
       this.$output.text(err.message);
     }
@@ -87,6 +90,7 @@ export default class BabelREPL {
     let done = false;
 
     function flush() {
+      //console.log('buffer', buffer);
       $consoleReporter.text(buffer.join('\n'));
     }
 
@@ -126,7 +130,7 @@ export default class BabelREPL {
         return logs;
       }, []);
 
-      write(logs.join(' '));
+      write(logs.join('\n'));
     };
 
     try {
@@ -135,6 +139,7 @@ export default class BabelREPL {
       // we created.
       new Function('console', code)(capturingConsole);
     } catch (err) {
+      //console.log('THERE IS A PROBLEM!!', code);
       error = err;
       buffer.push(err.message);
     }
@@ -142,8 +147,8 @@ export default class BabelREPL {
     done = true;
     flush();
 
-    if (error) {
-      throw error;
-    }
+    // if (error) {
+    //   throw error;
+    // }
   }
 }

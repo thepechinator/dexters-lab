@@ -1,5 +1,7 @@
 // third party stuff
-import 'vendors';
+// import 'vendors';
+
+import $ from 'jquery';
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/theme/vibrant-ink.css';
 
@@ -41,6 +43,10 @@ $(document).foundation();
 $('.tabs').on('toggled', function (event, tab) {
   weakmap.get($(tab).parent()[0]).refresh();
 });
+
+
+import SuperDeck from './views/super-deck';
+new SuperDeck($('.slides'));
 
 // for (let item of array) {
 //   item.refresh();

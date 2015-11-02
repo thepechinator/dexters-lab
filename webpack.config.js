@@ -5,10 +5,14 @@ var webpack = require("webpack");
 var path = require('path');
 
 var settings = {
-    entry: "./src/js/main.js",
+    entry: {
+      main: "./src/js/main.js",
+      vendors: "./src/js/vendors.js"
+    },
     output: {
         path: __dirname + "/public/js",
         filename: "[name].js",
+        chunkFilename: '[name].js',
         publicPath: "http://localhost:8080/js/"
     },
     module: {
@@ -39,9 +43,10 @@ var settings = {
             // to attach to the window scope.
             { test: /jquery\.js$/, loader: 'expose?$' },
             { test: /jquery\.js$/, loader: 'expose?jQuery' },
+            { test: /modernizr\.js$/, loader: 'imports?this=>window' },
 
             {
-              test: /\.(nunj|nunjucks|html)$/,
+              test: /\.(nunj|nunjucks)$/,
               loader: 'nunjucks-loader',
               query: {
                   config: __dirname + '/nunjucks.config.js'
@@ -76,12 +81,12 @@ var settings = {
             backbone: 'backbone/backbone',
             'backbone.wreqr': 'backbone.wreqr/lib/backbone.wreqr',
             'backbone.babysitter': 'backbone.babysitter/lib/backbone.babysitter',
-            'backbone.marionette': 'backbone.marionette/lib/backbone.marionette'
+            'backbone.marionette': 'backbone.marionette/lib/backbone.marionette',
             // nouislider: 'nouislider/distribute/nouislider',
             // d3: 'd3/d3',
             // breakpoints: 'js-breakpoints/breakpoints',
             // machina: 'machina/lib/machina',
-            // modernizr: 'modernizr/modernizr',
+            modernizr: 'modernizr/modernizr',
             // fastclick: 'fastclick/lib/fastclick'
         }
     },
@@ -92,11 +97,11 @@ var settings = {
     devtool: 'source-map'
 };
 
-// settings.plugins.push(
-//     new webpack.optimize.CommonsChunkPlugin({ // this one only pulls common stuff from vendors and main
-//         name: 'vendors',
-//         chunks: ['main']
-//     })
-// );
+settings.plugins.push(
+    new webpack.optimize.CommonsChunkPlugin({ // this one only pulls common stuff from vendors and main
+        name: 'vendors',
+        chunks: ['main']
+    })
+);
 
 module.exports = settings;

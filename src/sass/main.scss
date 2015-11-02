@@ -1,63 +1,10 @@
 @import "shapes";
 @import "settings";
 @import "foundation";
+@import "base";
 
-/* none of this CSS is necessary for the preloader */
-body {
-  background-color: #ccc;
-  font-family: sans-serif;
-  font-size: 18px;
-  padding-top: 1.5rem;
-}
-p {
-  position: fixed;
-  bottom: 0;
-  text-align: center;
-  width: 100%;
-  padding: 0 10px 4px 10px;
-}
-
-// example styles
-
-.example-output {
-  background: #fff;
-  border-radius: 5px 5px 0 0;
-  border: 1px solid #eee;
-  min-height: 290px;
-  padding: 0.5rem;
-}
-
-.example-console {
-  background: #999;
-  border: 1px solid #ddd;
-  border-radius: 0 0 5px 5px;
-  min-height: 50px;
-  padding: 0.5rem;
-}
-
-.block-normal {
-  margin-bottom: 1.5rem !important;
-}
-
-// overrides
-.cm-s-vibrant-ink.CodeMirror {
-  border-radius: 0 5px 5px 5px;
-}
-
-.tabs dd, .tabs .tab-title {
-  opacity: 0.5;
-  border-radius: 5px 5px 0 0;
-  border: 1px solid
-}
-
-.tabs dd, .tabs .tab-title.active {
-  opacity: 1.0;
-}
-
-.tabs-content > .content {
-  padding-top: 0;
-}
-
-.tabs dd > a, .tabs .tab-title > a {
-  padding: 0.35rem .75rem;
-}
+@import "modules/typography";
+@import "modules/example";
+@import "modules/block";
+@import "modules/editor";
+@import "modules/tabs";

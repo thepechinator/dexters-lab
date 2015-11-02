@@ -1,24 +1,9 @@
 {% from './example.nunj' import 'build_example' %}
 
-{% call build_example() %}
-let something='yes it is';
-{% endcall %}
+{% set slides = ['intro', 'basics', 'strings'] %}
 
-{% call build_example() %}
-let myVariable = 'yes indeed';
-function blah() {
-  console.log('yeah');
-}
-blah();
-{% endcall %}
-
-
-{% call build_example() %}
-class MyClass {
-  constructor() {
-    this.myProp = 'it works!';
-  }
-}
-
-console.log(new MyClass().myProp);
-{% endcall %}
+<div class="slides">
+{% include './slides/intro.nunj' %}
+{% include './slides/basics.nunj' %}
+{% include './slides/strings.nunj' %}
+</div>

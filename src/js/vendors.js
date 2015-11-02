@@ -1,6 +1,7 @@
 // This transparently gets attached to our window as $ and jQuery
 // via a config.
 require('jquery');
+require('modernizr');
 
 require('foundation/js/foundation/foundation');
 //require('foundation/js/foundation/foundation.abide.js');

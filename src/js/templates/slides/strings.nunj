@@ -1,0 +1,27 @@
+{% extends './_layout.nunj' %}
+
+{% block content %}
+  {# TODO: special effects or something #}
+  <h1>Strings</h1>
+
+  <dl>
+    <dt class="text-large">What is it?</dt>
+    <dd class="text-normal">Definition Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nullam id dolor id nibh ultricies vehicula ut id elit.</dd>
+  </dl>
+
+  <dl>
+    <dt class="text-large">Where are we using it?</dt>
+    <dd class="text-normal">Definition Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nullam id dolor id nibh ultricies vehicula ut id elit.</dd>
+  </dl>
+
+  {% call build_example() %}
+let templateString = `This
+is
+Sparta!!!`;
+console.log(templateString);
+
+let name = 'template string';
+templateString = `No, this is a ${name}`;
+console.log(templateString);
+  {% endcall %}
+{% endblock %}

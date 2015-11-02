@@ -1,0 +1,5 @@
+<div class="row slide js-slide">
+  {% block content %}
+
+  {% endblock %}
+</div>
