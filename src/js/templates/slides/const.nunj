@@ -1,0 +1,60 @@
+{% extends './_layout.nunj' %}
+
+{% block content %}
+  <h1>const</h1>
+
+  <div class="block-normal text-normal slide">
+    Constants in JavaScript? Say it ain't so!
+  </div>
+
+  <div class="slide">
+    <div>
+  {% call build_example() %}
+// const example
+
+// Example 1
+// Like in many languages, once you declare a
+// constant, you can't set it to anything else.
+// NOTE: Using const is similar to using let in
+// terms of scope.
+{
+  const IRONMAN = "Tony Stark";
+  // This will throw a compile-time error in
+  // Babel. Try it by uncommenting!
+  // IRONMAN = "Mandarin";
+}
+
+// Example 2
+// Though you cannot reassign a const, that doesn't
+// mean the value you set it to is itself immutable.
+{
+	// For example, assigned to an array,
+  // we can update it.
+  const IRONMAN = [1, 2, 3, 4];
+  console.log('#2', IRONMAN);
+  IRONMAN.push(5);
+  console.log(IRONMAN);
+
+  // Same with objects.
+  const IRON_PATRIOT = {punch: 'falcon'};
+  console.log(IRON_PATRIOT);
+  IRON_PATRIOT.fly = true;
+  console.log(IRON_PATRIOT);
+}
+  {% endcall %}
+    </div>
+  </div>
+
+  <div class="block-normal text-normal slide">
+    Great... but why bother?
+  </div>
+
+  <ul>
+    <li class="text-normal slide">
+      Communicates a variable should not be modified.
+    </li>
+    <li class="text-normal slide">
+      Use with things like event names, breakpoints, mapping values.
+    </li>
+  </ul>
+{% endblock %}

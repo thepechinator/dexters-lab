@@ -88,6 +88,7 @@ export default class BabelREPL {
       // console.log('ERROR thrown', transformed.code);
       // don't throw it.. just output it
       this.$output.text(err.message);
+      this.$consoleReporter.text(err.message);
     }
   }
 
@@ -139,8 +140,9 @@ export default class BabelREPL {
         } else if (log instanceof Function) {
           logs.push(log.toString());
         } else {
-          logs.push(JSON.stringify(log));
+          logs.push(String(JSON.stringify(log)));
         }
+
         return logs;
       }, []);
 
@@ -162,8 +164,8 @@ export default class BabelREPL {
     done = true;
     flush();
 
-    // if (error) {
-    //   throw error;
-    // }
+    if (error) {
+      throw error;
+    }
   }
 }

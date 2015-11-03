@@ -1,29 +1,28 @@
 // third party stuff
 // import 'vendors';
 
-import $ from 'jquery';
+// Third party stuff.
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/theme/vibrant-ink.css';
-
+import $ from 'jquery';
 import CodeMirror from 'codemirror/lib/codemirror';
-
 import 'codemirror/mode/javascript/javascript';
 import 'codemirror/mode/htmlmixed/htmlmixed';
-
-import 'sass/main.scss';
-
 import 'backbone.marionette';
+
+// Our stuff
+import 'sass/main.scss';
+import BabelREPL from 'babel/repl';
+import Stage from 'views/stage';
+import SuperDeck from './views/super-deck';
 
 // Need to override this to make it work with templates.
 Backbone.Marionette.Renderer.render = function( template, data ) {
   return template.render( data );
 };
 
-import Stage from 'views/stage';
 let stage = new Stage({el: $('.js-stage')});
 stage.render();
-
-import BabelREPL from 'babel/repl';
 
 // A good case for the weakmap, since we need to keep track of
 // what component holds. Alternatives would be to somehow
@@ -38,8 +37,11 @@ $('.js-example').each(function(index, el) {
   weakmap.set($(this).find('.tabs')[0], repl);
 });
 
+// Initialize foundation stuff
 $(document).foundation();
 
+// Need to keep track of this, so we can refresh the editor since
+// it and tabs don't exactly agree with each other without some help.
 $('.tabs').on('toggled', function (event, tab) {
   // Need to check if the key exists in the weakmap, since
   // we have the other tabs on the right to account for
@@ -48,43 +50,11 @@ $('.tabs').on('toggled', function (event, tab) {
   }
 });
 
-
-import SuperDeck from './views/super-deck';
+// Finally, create our deck which has some decent animations.
 new SuperDeck($('.slides'));
 
-// for (let item of array) {
-//   item.refresh();
-// }
 
-// $('.js-demo-text').each(function(index, el) {
-//   CodeMirror.fromTextArea(el, {
-//     mode: "javascript",
-//     lineNumbers: true,
-//     matchBrackets: true,
-//     tabSize: 2,
-//     onChange: function(instance, changeObj) {
-//       console.log('changed!');
-//     }
-//   });
-// });
-
-// codemirror stuff
-// var myCodeMirror = CodeMirror.fromTextArea($('#demotext')[0], {
-//   mode: "javascript",
-//   lineNumbers: true,
-//   matchBrackets: true,
-//   tabSize: 2
-// });
-// myCodeMirror.on('change', function(instance, changeObj) {
-//   // get the value
-//   console.log(instance.getValue());
-// });
-// myCodeMirror.setSize('50%');
-
-window.tryEval = function(code) {
-  eval(code);
-}
-
+// Some legacy code
 // let TweenMax = require('gsap');
 // let Particle = require('effects/particle');
 //
