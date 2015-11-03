@@ -190,13 +190,14 @@ Outline
         ```
     - iterators, for of
     ```javascript
-    
+
     ```
     - Generators (\*function)
     - destructuring
         - binding using pattern matching
         - multiple return values
     - Map, Set, WeakSet, WeakMap
+    - Promises
 - Advanced
     - Reflect (proxies)
 - Why are we using it?

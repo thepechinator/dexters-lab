@@ -13,6 +13,7 @@ export default class BabelREPL {
 
     this.$consoleReporter = this.$context.find('.js-console');
     this.$output = $context.find('.js-output');
+    this.$toggleFullScreen = $context.find('.js-toggle-fs');
 
     this.editorCompiled = CodeMirror.fromTextArea($context.find('.js-demo-compiled')[0], {
       mode: "javascript",
@@ -37,6 +38,19 @@ export default class BabelREPL {
     // Attach to change event so we can recompile each time something
     // changes.
     this.editor.on('change', _.debounce(this.handleCodeChange, 500).bind(this));
+
+    this.$toggleFullScreen.click(() => {
+      $context.toggleClass('is-full');
+
+      if ($context.hasClass('is-full')) {
+        this.$toggleFullScreen.text('Exit Full Screen');
+      } else {
+        this.$toggleFullScreen.text('Full Screen');
+      }
+
+      this.editor.refresh();
+      this.editorCompiled.refresh();
+    });
   }
 
   refresh() {
@@ -136,8 +150,9 @@ export default class BabelREPL {
     try {
       // So this is actually running the code we obtained
       // and setting the console used as the capturingConsole
-      // we created.
-      new Function('console', code)(capturingConsole);
+      // we created. It's kind of cool because it gives us control
+      // over what to replace in our block of our code.
+      new Function('console', '$$', code)(capturingConsole, this.$output);
     } catch (err) {
       //console.log('THERE IS A PROBLEM!!', code);
       error = err;

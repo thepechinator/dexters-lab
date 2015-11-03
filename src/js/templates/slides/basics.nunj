@@ -3,25 +3,35 @@
 {% block content %}
   <h1>Basics</h1>
 
-  <dl>
-    <dt class="text-large">What is it?</dt>
-    <dd class="text-normal">
-      ECMAScript 6
-    </dd>
-  </dl>
+  <ul>
+    <li class="text-normal slide">
+      Implicit 'strict' mode
+    </li>
+    <li class="text-normal slide">
+      let, const
+    </li>
+  </ul>
 
-  <dl>
-    <dt class="text-large">Where are we using it?</dt>
-    <dd class="text-normal">Definition Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nullam id dolor id nibh ultricies vehicula ut id elit.</dd>
-  </dl>
+  <div class="block-normal text-normal slide">
+    let finally provides variables with lexical scope! No more hoisting!
+  </div>
 
+  <div class="slide">
+    <div>
   {% call build_example() %}
-class MyClass {
-  constructor() {
-    this.myProp = 'it works!';
-  }
+// let examples
+// something is scoped to the if statement
+if (true) {
+  let something = 'something';
 }
-
-console.log(new MyClass().myProp);
+// This will fail because something is in its own block, and 'let'
+// just scopes it to that.
+try {
+  console.log(something);
+} catch (e) {
+  console.log(e.message);
+}
   {% endcall %}
+    </div>
+  </div>
 {% endblock %}

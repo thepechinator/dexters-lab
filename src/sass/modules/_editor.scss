@@ -1,4 +1,21 @@
 // overrides
+.CodeMirror {
+  height: 100%;
+}
+
 .cm-s-vibrant-ink.CodeMirror {
   border-radius: 0 5px 5px 5px;
+}
+
+.editor {
+  height: 400px;
+
+  &.is-full {
+    background: #888;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+  }
 }

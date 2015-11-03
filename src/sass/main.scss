@@ -13,6 +13,7 @@
   bottom: 0;
   position: fixed;
   text-align: right;
+  z-index: -1;
 }
 // Otherwise, our transitions won't work like how we expect them to.
 .slide.deck-child-current {

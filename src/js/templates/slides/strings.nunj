@@ -2,7 +2,7 @@
 
 {% block content %}
   {# TODO: special effects or something #}
-  <h1>Strings</h1>
+  <h1>Strings!!</h1>
 
   <dl>
     <dt class="text-large">What is it?</dt>

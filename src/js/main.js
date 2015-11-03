@@ -41,7 +41,11 @@ $('.js-example').each(function(index, el) {
 $(document).foundation();
 
 $('.tabs').on('toggled', function (event, tab) {
-  weakmap.get($(tab).parent()[0]).refresh();
+  // Need to check if the key exists in the weakmap, since
+  // we have the other tabs on the right to account for
+  if (weakmap.has($(tab).parent()[0])) {
+    weakmap.get($(tab).parent()[0]).refresh();
+  }
 });
 
 
