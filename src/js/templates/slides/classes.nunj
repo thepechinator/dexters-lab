@@ -1,0 +1,107 @@
+{% extends './_layout.nunj' %}
+
+{% block content %}
+  <h5>Classes</h5>
+
+  <ul>
+    <li class="text-normal slide">
+      Yes, there are actual classes now.
+    </li>
+    <li class="text-normal slide">
+      Mainly syntactic sugar.
+    </li>
+  </ul>
+
+  <div class="slide">
+    <div>
+  {% call build_example() %}
+// Classes example
+(function() {
+  // Just use the class keyword to define
+  // a class and use it!
+  //
+  // One thing to note is class declarations are
+  // NOT hoisted, unlike functions.
+	class Enterprise {
+    // Notice the lack of commas.
+
+    // Each one comes with its own constructor
+    // method that gets called when you make
+    // a new instance.
+  	constructor() {
+      // Here are instance properties.
+      // Normally, I like to prepend '_' to
+      // any private members.
+    	this.captain = 'Kirk';
+      this.crewMembers = ['Spock'];
+      this.energy = 500;
+      this.shieldsUp = true;
+    }
+
+    // Notice how we access properties of
+    // the class in each of its methods
+    // with 'this'.
+    handleAttack() {
+      this.checkShields();
+
+			if (this.shieldsUp) {
+        this.energy--;
+      	this.checkShields();
+        console.log('We are all good');
+      } else {
+      	console.log('Oh $%*#!');
+      }
+    }
+
+    checkShields() {
+      if (this.energy > 100) {
+      	this.shieldsUp = true;
+      } else {
+      	this.shieldsUp = false;
+      }
+    }
+
+    // Static properties can be defined by putting in
+    // the static keyword. Then you can invoke them
+    // via the class name itself without an instance.
+    static get ENTERPRISE_NAME() {
+    	return "ENTERPRISE";
+    }
+  }
+
+  // Let's try out our class.
+  let enterprise = new Enterprise();
+  console.log('enterprise.handleAttack()');
+  enterprise.handleAttack();
+
+  console.log('Static method:', Enterprise.ENTERPRISE_NAME);
+
+  // Classes may also be extended.
+  class DeathStar extends Enterprise {
+  	constructor() {
+      // Like other languages, can call super.
+      // Note unlike some other languages, super()
+      // MUST be called first. Otherwise, it will
+      // throw an error.
+    	super();
+      this.energy = 100;
+    }
+  }
+
+  let deathstar = new DeathStar();
+  console.log('time for the deathstar');
+  deathstar.handleAttack();
+}());
+  {% endcall %}
+    </div>
+  </div>
+
+  <ul class="slide">
+    ref:
+    <li class="text-small">
+      <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes" target="_blank">
+        https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes
+      </a>
+    </li>
+  </ul>
+{% endblock %}

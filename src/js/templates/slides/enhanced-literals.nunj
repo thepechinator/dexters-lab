@@ -1,0 +1,67 @@
+{% extends './_layout.nunj' %}
+
+{% block content %}
+  <h5>Enhanced object literals</h5>
+
+  <div class="slide text-large">
+    Object literal? What is that?
+  </div>
+
+  <div class="slide">
+    <div>
+  {% call build_example() %}
+// Enhanced object literal example
+(function() {
+  // What is an object literal you ask?
+  // It's the technical term for the following.
+  // That's it!
+  let objLiteral = {
+    'prop1': 1,
+    'prop2': 2
+  };
+
+  // What are these enhanced object literals I speak of?
+  // In ES6, you can do some cool stuff with object properties,
+  // including creating dynamic properties.
+  let prop = 'starcraft';
+  let prop2 = 'alliance';
+
+  // Our object literal example.
+  let es6Obj = {
+    // Computed property. Normally in ES5 you couldn't do it
+    // in the literal definition (but you can do it after the fact).
+    [prop]: 'protoss',
+    ['zerg' + 'terran']: 'boom',
+    [prop2 + 'Value']: 'protoss',
+    // shorthand method names
+    myMethod(param) {
+      return 'myMethod called';
+    }
+  };
+
+  // Watch all of them work
+  console.log('Dynamic props:', es6Obj[prop], es6Obj.zergterran);
+  console.log('\nShorthand method names:', es6Obj.myMethod('fakeParam'));
+
+  // Compare this to how you'd do it in ES5.
+  let es5Obj = {
+    'zergterran': 'boom',
+    myMethod: function(param) {
+      return 'myMethod called';
+    }
+  };
+  es5Obj[prop] = 'protoss';
+}());
+  {% endcall %}
+    </div>
+  </div>
+
+  <ul class="slide">
+    ref:
+    <li class="text-small">
+      <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer" target="_blank">
+        https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer
+      </a>
+    </li>
+  </ul>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends './_layout.nunj' %}
+
+{% block content %}
+  <h5>Modules</h5>
+
+  <ul>
+    <li class="text-normal slide">
+      Modules
+    </li>
+  </ul>
+
+  <div class="slide">
+    <div>
+  {% call build_example() %}
+// Modules example
+// This is the pattern
+// How to make a module to be imported.
+// The default export pattern
+// Example file path: './lib/ui/cool.js'
+export default class MyCoolClass {};
+
+// How to import it.
+import CoolThing from './lib/ui/cool';
+new CoolThing();
+
+// Import individual methods from a module.
+function methodOne() {}
+function methodTwo() {}
+module.exports = {
+	methodOne: methodOne,
+  methodTwo: methodTwo
+};
+import {methodOne, methodTwo} from './lib/ui/cool';
+
+// Import as alias
+function methodOne() {}
+function methodTwo() {}
+module.exports = {
+	longMethodNameThatIsRidiculous: methodOne,
+  methodTwo: methodTwo
+};
+import {longMethodNameThatIsRidiculous as saneMethod} from './lib/ui/cool';
+      {% endcall %}
+    </div>
+  </div>
+
+  <ul class="slide">
+    ref:
+    <li class="text-small">
+      <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import" target="_blank">
+        https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import
+      </a>
+    </li>
+  </ul>
+{% endblock %}

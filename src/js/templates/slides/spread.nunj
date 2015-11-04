@@ -1,0 +1,65 @@
+{% extends './_layout.nunj' %}
+
+{% block content %}
+  <h5>Spread Operator</h5>
+
+  <ul>
+    <li class="text-normal slide">
+      Spread
+    </li>
+  </ul>
+
+  <div class="slide">
+    <div>
+  {% call build_example() %}
+// Spread operator example
+
+// Example 1
+// Usage with function parameters.
+function myFunction(x, y, z) {
+	console.log(x, y, z);
+}
+
+let args = [4, 1, 9];
+// With the use of the ... notation, the
+// args array 'spreads' to populate the three
+// expected arguments. To accomplish the same
+// thing in ES5, you would need to do something
+// like (uncomment if you want to prove it).
+// myFunction.apply(null, args);
+console.log('#1');
+myFunction(...args);
+
+// Example 2
+// Use it to add elements from one array to another
+// easily.
+let arr1 = [0, 1, 2];
+let arr2 = [3, 4, 5];
+arr1.push(...arr2);
+console.log('\n#2', arr1);
+
+// Example 3
+// Something not possible in ES5. Using new
+// with apply. AKA, passing in an array whose
+// elements are used as arguments.
+class RetroMovies {
+	constructor(first, last) {
+  	this.name = `${first} ${last}`;
+  }
+}
+let constructorArgs = ['suzie', 'q'];
+let movie = new RetroMovies(...constructorArgs);
+console.log('\n#3', movie.name);
+  {% endcall %}
+    </div>
+  </div>
+
+  <ul class="slide">
+    ref:
+    <li class="text-small">
+      <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator" target="_blank">
+        https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator
+      </a>
+    </li>
+  </ul>
+{% endblock %}

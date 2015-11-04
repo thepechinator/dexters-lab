@@ -1,0 +1,95 @@
+{% extends './_layout.nunj' %}
+
+{% block content %}
+  <h1>Map, WeakMap</h1>
+
+  <ul>
+    <li class="text-normal slide">
+      New data structures
+    </li>
+    <li class="text-normal slide">
+      Map
+    </li>
+    <li class="text-normal slide">
+      WeakMap
+    </li>
+  </ul>
+
+  <div class="slide">
+    <div>
+  {% call build_example() %}
+// Map example
+
+// A key/value map. This is similar to an object,
+// but with a few key differences (no pun intended):
+//
+// - Looping through a Map is done in insertion order
+// - A size of the Map is easily retrieved
+// - The keys of an object are restricted to Symbols
+// and Strings, whereas Map keys can be anything.
+
+// Q: Wait, what? Object keys are really only Strings
+// and Symbols? But I was able to use objects as
+// keys before.
+
+// A: While it won't throw an error if you try that,
+// what's actually happening behind the scenes is
+// when an object gets a key that isn't a String or
+// Symbol, it runs .toString() on it, resulting
+// in [Object object] as the key. To show this point:
+
+function objectKeyString() {
+	var obj = {'name': 'alpha'};
+  var obj2 = {'name': 'beta'};
+  var obj3 = {'name': 'omega'};
+  obj[obj2] = 'object2';
+  obj[obj3] = 'object3';
+  console.log(obj);
+}
+
+// Maps are useful for collections which you plan
+// to iterate over and whose size is important
+// to keep track of.
+function createMap() {
+	var obj1 = {'name': 'alpha'};
+  var obj2 = {'name': 'beta'};
+  var obj3 = {'name': 'omega'};
+	var map = new Map();
+
+  // Create object keys.
+  map.set(obj2, 'I am beta');
+  map.set(obj3, 'I am the omega');
+  map.set(obj1, 'I am alpha');
+
+  // Easily retrieve based on the key with .get
+  console.log("map.get(obj3)", map.get(obj3));
+
+  // Get the size.
+  console.log("map.size", map.size);
+
+  // Loop in the order the values were added.
+  for (var [key, value] of map) {
+  	console.log('key', key, 'value', value);
+  }
+}
+
+objectKeyString();
+createMap();
+  {% endcall %}
+    </div>
+  </div>
+
+  <ul class="slide">
+    ref:
+    <li class="text-small">
+      <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map" target="_blank">
+        https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map
+      </a>
+    </li>
+    <li class="text-small">
+      <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap" target="_blank">
+        https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap
+      </a>
+    </li>
+  </ul>
+{% endblock %}

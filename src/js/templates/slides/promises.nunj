@@ -1,0 +1,77 @@
+{% extends './_layout.nunj' %}
+
+{% block content %}
+  <h1>Promises</h1>
+
+  <ul>
+    <li class="text-normal slide">
+      Promises
+    </li>
+  </ul>
+
+  <div class="slide">
+    <div>
+  {% call build_example() %}
+// Promises example
+
+// The concept of a promise is it represents an
+// operation that has not yet completed, but once
+// it has, it gives you a way to run code on
+// completion. It is perfect for deferred or
+// asynchronous operations.
+//
+// It has three states:
+// - pending : initial state, waiting signal on success or failure
+// - fulfilled : successful completion
+// - rejected : operation failure
+
+// Many libraries like jQuery have an implementation of Promises,
+// but with ES6 it provides a way to standardize the implementation
+// of that concept.
+
+function promiseExample(shouldResolve=true) {
+  console.log('promiseExample called');
+  // The Promise function takes in a resolver function, which
+  // enables us to resolve or reject that promise based
+  // on conditions we define.
+	var p1 = new Promise(
+    function(resolve, reject) {
+      // To give it some asynchronous behavior.
+      window.setTimeout(function() {
+        console.log('timeout ended');
+        if (shouldResolve) {
+          // This is how you fulfill the promise
+         	resolve('Go ahead');
+        } else {
+        	// You can also reject it.
+            reject('You shall not pass');
+        }
+      }, 3000);
+  	}
+  );
+
+  // This defines the next steps to take based on
+  // whether the promise was successfully resolved
+  // (callback in .then) or rejected (callback in .catch).
+  p1.then(function(value) {
+    console.log('resolved with value', value);
+  }).catch(function(reason) {
+		console.log('rejected because', reason);
+  });
+}
+
+// promiseExample();
+// promiseExample(false);
+  {% endcall %}
+    </div>
+  </div>
+
+  <ul class="slide">
+    ref:
+    <li class="text-small">
+      <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank">
+        https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
+      </a>
+    </li>
+  </ul>
+{% endblock %}

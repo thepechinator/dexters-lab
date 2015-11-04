@@ -1,0 +1,74 @@
+{% extends './_layout.nunj' %}
+
+{% block content %}
+  <h1>Set</h1>
+
+  <ul>
+    <li class="text-normal slide">
+      Set
+    </li>
+    <li class="text-normal slide">
+      WeakSet
+    </li>
+  </ul>
+
+  <div class="slide">
+    <div>
+  {% call build_example() %}
+// Set example
+
+// Stores unique values. The values can be anything.
+// You can loop over the inserted objects in the
+// order in which they came in.
+var set = new Set();
+// Add basic values.
+set.add(5);
+set.add(1);
+set.add(7);
+set.add(8);
+set.add(6);
+set.add(5);
+// Notice how 5 isn't duplicated.
+// Values must be unique.
+console.log(set);
+
+// Adding objects.
+set.add({a: 'a'});
+set.add({a: 'a'});
+
+// Note though the values appear identical,
+// they are both added since they are technically
+// not the same object.
+console.log(set);
+
+// Versus doing this, which results in the 'obj'
+// variable being added once.
+let obj = {b: 'b'};
+set.add(obj);
+set.add(obj);
+console.log(set);
+
+// You can also iterate over a set.
+// Note how they get iterated in the right order.
+console.log('start of iterator');
+for (let value of set) {
+	console.log(value);
+}
+  {% endcall %}
+    </div>
+  </div>
+
+  <ul class="slide">
+    ref:
+    <li class="text-small">
+      <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set" target="_blank">
+        https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set
+      </a>
+    </li>
+    <li class="text-small">
+      <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet" target="_blank">
+        https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet
+      </a>
+    </li>
+  </ul>
+{% endblock %}

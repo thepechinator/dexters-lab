@@ -1,0 +1,41 @@
+{% extends './_layout.nunj' %}
+
+{% block content %}
+  <h5>Default function parameters</h5>
+
+  <div class="slide">
+    <div>
+  {% call build_example() %}
+// Default function parameters example
+
+(function() {
+  // Example 1
+  // Bam. Just any other language.
+  // NOTE: The value is evaluated at call time.
+	function exampleOne(param, defaultParam="I have the POWERRRR!!") {
+    console.log('#1', defaultParam);
+  }
+
+  // Example 2
+  // Another neat thing is default parameters to
+  // any that follow them.
+  function exampleTwo(param, cool="I am cool", cooler=cool+" but the person after me is cooler") {
+		console.log('#2', cooler);
+  }
+
+  exampleOne();
+  exampleTwo();
+}());
+  {% endcall %}
+    </div>
+  </div>
+
+  <ul class="slide">
+    ref:
+    <li class="text-small">
+      <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Default_parameters" target="_blank">
+        https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Default_parameters
+      </a>
+    </li>
+  </ul>
+{% endblock %}

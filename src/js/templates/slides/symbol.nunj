@@ -1,0 +1,89 @@
+{% extends './_layout.nunj' %}
+
+{% block content %}
+  <h1>Symbol</h1>
+
+  <ul>
+    <li class="text-normal slide">
+      New primitive type
+    </li>
+  </ul>
+
+  <div class="slide">
+    <div>
+  {% call build_example() %}
+// Symbol example
+
+// A new primitive type, each created Symbol
+// is unique. Note creating one does NOT include
+// the new keyword. If you try to, it will throw
+// an error.
+
+// Example 1
+function exampleOne() {
+	// Basic construction.
+	let sym1 = Symbol();
+
+  // An optional description for the Symbol
+  // may be passed in.
+  let sym2 = Symbol('id');
+
+  // But just because two symbols have the same
+  // description, that does NOT make them equal.
+  // Remember, all Symbol instances are unique.
+  let sym3 = Symbol('id');
+
+  // This will evaluate to false.
+  console.log('#1', sym2 === sym3);
+}
+
+// Example 2
+// Symbols are typically not stored in any global
+// registry. However, there is a way to add
+// them to a global registry, where they can
+// later be retrieved. Though, that may seem
+// counter-intuitive to their purpose.
+function exampleTwo() {
+  // Create a Symbol in the global registry that
+  // may later be retrieved via the same method.
+  // This is a case where the Symbol here isn't
+  // unique.
+  Symbol.for('myKey');
+	console.log('#2', Symbol.for('myKey'));
+}
+
+// So, why use Symbols? They are useful in cases
+// where you need collision-free keys in an object,
+// since Symbols can be used as keys. For example,
+// you could use them as event names.
+
+function exampleThree() {
+  const BREAKPOINT_CHANGE = Symbol();
+
+  class BreakpointEvent {
+		constructor() {}
+    static get BREAKPOINT_CHANGE() {
+      return BREAKPOINT_CHANGE;
+  	}
+  }
+}
+
+exampleOne();
+exampleTwo();
+exampleThree();
+  {% endcall %}
+    </div>
+  </div>
+
+  <ul class="slide">
+    ref:
+    <li class="text-small">
+      <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol" target="_blank">
+        https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol
+      </a>
+      <a href="http://blog.keithcirkel.co.uk/metaprogramming-in-es6-symbols/" target="_blank">
+        http://blog.keithcirkel.co.uk/metaprogramming-in-es6-symbols/
+      </a>
+    </li>
+  </ul>
+{% endblock %}

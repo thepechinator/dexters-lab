@@ -1,0 +1,48 @@
+{% extends './_layout.nunj' %}
+
+{% block content %}
+  <h1>Destructuring</h1>
+
+  <ul>
+    <li class="text-normal slide">
+      Destructuring
+    </li>
+  </ul>
+
+  <div class="slide">
+    <div>
+  {% call build_example() %}
+// Destructuring example
+
+// Basic concept
+
+// destructure on an array
+let [a, b] = [3, 4];
+console.log('#1', a, b);
+
+// parentheses is necessary here when we aren't
+// initializing a and b and want to destructure
+// on an object
+({firstKey: a, secondKey: b} = {firstKey: 'something', secondKey: 'somewhere'});
+console.log('#2', a, b);
+
+// multiple return values
+function seekTargets() {
+	return [1, 2];
+}
+
+[a, b] = seekTargets();
+console.log('#3', a, b);
+  {% endcall %}
+    </div>
+  </div>
+
+  <ul class="slide">
+    ref:
+    <li class="text-small">
+      <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment" target="_blank">
+        https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
+      </a>
+    </li>
+  </ul>
+{% endblock %}

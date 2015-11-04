@@ -1,0 +1,37 @@
+{% extends './_layout.nunj' %}
+
+{% block content %}
+  <h6>Why bother using this stuff?</h6>
+
+  <ul>
+    <li class="text-normal slide">
+      ES6 is happening, whether you like it or not
+    </li>
+    <li class="text-normal slide">
+      Continued education
+    </li>
+  </ul>
+
+  <div class="slide">
+    <div>
+  {% call build_example() %}
+// Set example
+
+  {% endcall %}
+    </div>
+  </div>
+
+  <ul class="slide">
+    ref:
+    <li class="text-small">
+      <a href="http://es6-features.org/" target="_blank">
+        http://es6-features.org/
+      </a>
+    </li>
+    <li class="text-small">
+      <a href="https://esdiscuss.org/" target="_blank">
+        https://esdiscuss.org/
+      </a>
+    </li>
+  </ul>
+{% endblock %}

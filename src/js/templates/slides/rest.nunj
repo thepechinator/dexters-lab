@@ -1,0 +1,37 @@
+{% extends './_layout.nunj' %}
+
+{% block content %}
+  <h5>Rest parameters</h5>
+
+  <ul>
+    <li class="text-normal slide">
+      Rest parameters
+    </li>
+  </ul>
+
+  <div class="slide">
+    <div>
+  {% call build_example() %}
+// Rest parameters example
+
+// Example 1
+// No more arguments nonsense
+// Pass in unlimited amount of unexpected
+// parameters. Can access them as a real
+// array. No slicing nonsense required.
+function duel(action, ...targets) {
+  console.log('#1', targets);
+}
+duel('lightsaber', 'luke', 'anakin', 'leia', 'chewbacca', 'han');  {% endcall %}
+    </div>
+  </div>
+
+  <ul class="slide">
+    ref:
+    <li class="text-small">
+      <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters" target="_blank">
+        https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters
+      </a>
+    </li>
+  </ul>
+{% endblock %}
