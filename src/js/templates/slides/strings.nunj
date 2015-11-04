@@ -1,16 +1,146 @@
 {% extends './_layout.nunj' %}
 
 {% block content %}
-  {# TODO: special effects or something #}
-  <h1>Strings!!</h1>
+  <h1>Template strings</h1>
 
-  <dl>
-    <dt class="text-large">What is it?</dt>
-    <dd class="text-normal">Definition Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nullam id dolor id nibh ultricies vehicula ut id elit.</dd>
-  </dl>
+  <div class="block-normal text-normal slide">
+    multiline strings, variable interpolation
+  </div>
 
-  <dl>
-    <dt class="text-large">Where are we using it?</dt>
-    <dd class="text-normal">Definition Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nullam id dolor id nibh ultricies vehicula ut id elit.</dd>
-  </dl>
+  <div class="block-normal text-normal slide">
+    Before
+  </div>
+
+  <div class="slide">
+    <div>
+  {% call build_example() %}
+// strings example
+
+// First, consider ES5.
+(function() {
+  // We've all done it at some point: making some
+  // html string we need to inject into our page.
+  // Maybe it's a library that creates its own HTML
+  // on the fly and needs to insert into a specified
+  // element.
+  //
+  // If we want to make it readable,
+  // we may do something like the following.
+  var htmlString =
+      '<div class="row">' +
+        '<div class="column small-12">' +
+          '<a class="button normal small-12">I am a button</a>' +
+        '</div>' +
+      '</div>';
+
+  // $$ is a special reserved variable that
+  // corresponds to a jQuery object representing
+  // the container under the HTML Output tab.
+  // Go crazy with it.
+  $$.html('#1' + htmlString);
+}());
+
+// How about variable interpolation? This is how you'd
+// do it in ES5.
+(function() {
+  var superman = 'Clark Kent';
+  var batman = 'Bruce Wayne';
+
+  var propString = 'superman is ' + superman +
+    '\nand batman is ' + batman;
+
+  console.log('#1', propString);
+}());
+  {% endcall %}
+    </div>
+  </div>
+
+  <div class="block-normal text-normal slide">
+    Make way for template strings!
+  </div>
+
+  <div class="slide">
+    <div>
+  {% call build_example() %}
+// template strings example
+
+// Example 1
+// Let's revisit the first example in the strings example.
+(function() {
+  // With the help of backticks (`), a multiline string is as easy
+  // as this. I'm not scared of you anymore, multiline html
+  // strings!
+  var htmlString =
+`<div class="row">
+  <div class="column small-12">
+    <a class="button normal small-12">I am a button</a>
+  </div>
+</div>`;
+
+  // Here is what it looks like in the console.
+  // Notice how all the whitespace is preserved. Nice!
+  console.log('#1', htmlString);
+
+  // $$ is a special reserved variable that
+  // corresponds to a jQuery object representing
+  // the container under the HTML Output tab.
+  // Go crazy with it.
+  $$.html('#1' + htmlString);
+}());
+
+// Example 2
+// How about variable interpolation? Piece of cake.
+(function() {
+  var superman = 'Clark Kent';
+  var batman = 'Bruce Wayne';
+
+  // Note that the ${} is how you interpolate your
+  // variables in template strings.
+  var propString =
+`superman is ${superman}
+and batman is ${batman}`;
+
+  console.log('#2', propString);
+}());
+
+// Example 3
+// There is also the concept of tagged template strings.
+// It lets you prepend a function name to a template string,
+// which then has access to an array of all the regular strings
+// and the variables in the template string.
+(function() {
+  var superman = 'Clark Kent';
+  var batman = 'Bruce Wayne';
+
+  function myTagFunction(strings, ...values) {
+    console.log('#3');
+    console.log('strings[0]', strings[0]);
+    console.log('values[0]', values[0]);
+    console.log('strings[1]', strings[1]);
+    console.log('values[1]', values[1]);
+
+    return 'But Joker is Joker';
+  }
+  // Note that the ${} is how you interpolate your
+  // variables in template strings.
+  var propString =
+myTagFunction`superman is ${superman}
+and batman is ${batman}`;
+
+  // Note how propString is equal to whatever was returned
+  // by the tag function.
+  console.log(propString);
+}());
+  {% endcall %}
+    </div>
+  </div>
+
+  <ul>
+    <li class="text-small slide">
+      ref:
+      <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/template_strings" target="_blank">
+        https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/template_strings
+      </a>
+    </li>
+  </ul>
 {% endblock %}

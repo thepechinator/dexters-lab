@@ -16,7 +16,6 @@ export default class SuperDeck {
       let $el = $(el);
       this.slideParentMap.set(el, this.findSlideParent($el));
     });
-    console.log(this.slideParentMap);
 
     // This can at least help us with the navigation.
     // Hopefully we can just hook into its events.
@@ -43,7 +42,6 @@ export default class SuperDeck {
         TweenMax.from(this.slideParentMap.get($toSlide[0]), 0.5, {css: {right: "-=100%"}})
       } else {
         // moving backward
-        console.log('moving backward', this.slideParentMap.get($toSlide[0]));
         TweenMax.from(this.slideParentMap.get($toSlide[0]), 0.5, {css: {right: "+=100%"}})
       }
     });
@@ -51,7 +49,6 @@ export default class SuperDeck {
     // We need to have an exit animation for the slide we're leaving,
     // because I think it looks cooler.
     $(document).on('deck.beforeChange', (event, from, to) => {
-      console.log(event);
       let $fromSlide = this.navEngine('getSlide', from);
       let $toSlide = this.navEngine('getSlide', to);
 
@@ -66,7 +63,6 @@ export default class SuperDeck {
       }
 
       if (!this.animatedExit || this.animating) {
-        console.log('animating deck.beforeChange');
         event.preventDefault();
 
         if (!this.animatedExit) {
@@ -83,7 +79,7 @@ export default class SuperDeck {
           $('body').scrollTop(0);
           TweenMax.to(this.slideParentMap.get($fromSlide[0]), 0.5,
             {css: {right: moveDir}, onComplete: () => {
-              console.log('animation complete');
+              // console.log('animation complete');
               this.animatedExit = true;
               this.animating = false;
               this.navEngine('go', to);

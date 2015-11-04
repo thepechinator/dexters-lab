@@ -4,7 +4,9 @@
 
 import $ from 'jquery';
 import _ from 'underscore';
-import CodeMirror from 'codemirror/lib/codemirror';
+import 'codemirror/lib/codemirror';
+import 'codemirror/addon/comment/comment';
+import 'codemirror/keymap/sublime';
 
 // babel is provided in an external script tag
 export default class BabelREPL {
@@ -21,7 +23,8 @@ export default class BabelREPL {
       matchBrackets: true,
       tabSize: 2,
       readOnly: true,
-      theme: 'vibrant-ink'
+      theme: 'vibrant-ink',
+      keyMap: 'sublime'
     });
 
     this.editor = CodeMirror.fromTextArea($context.find('.js-demo-text')[0], {
@@ -29,7 +32,8 @@ export default class BabelREPL {
       lineNumbers: true,
       matchBrackets: true,
       tabSize: 2,
-      theme: 'vibrant-ink'
+      theme: 'vibrant-ink',
+      keyMap: 'sublime'
     });
 
     // Compile what's already in there.
@@ -135,17 +139,35 @@ export default class BabelREPL {
       Function.prototype.apply.call(console.log, console, args);
 
       let logs = args.reduce(function(logs, log) {
+        console.log('log', log);
         if (typeof log === 'string') {
+          // console.log('string');
           logs.push(log);
+        } else if (typeof log === 'symbol') {
+          logs.push(String(log));
         } else if (log instanceof Function) {
+          // console.log('function');
           logs.push(log.toString());
         } else {
-          logs.push(String(JSON.stringify(log)));
+          // console.log('log', log);
+          // We need to account for DOM elements.
+          if (typeof log !== 'undefined' &&
+            typeof log.outerHTML !== 'undefined') {
+            logs.push(log.outerHTML);
+          } else {
+            try {
+              log = JSON.stringify(log);
+            } catch(e) {
+
+            }
+            logs.push(String(log));
+          }
         }
 
         return logs;
       }, []);
 
+      // console.log('logs', logs);
       write(logs.join('\n'));
     };
 

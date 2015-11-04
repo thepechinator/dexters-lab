@@ -5,7 +5,7 @@
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/theme/vibrant-ink.css';
 import $ from 'jquery';
-import CodeMirror from 'codemirror/lib/codemirror';
+// import CodeMirror from 'codemirror/lib/codemirror';
 import 'codemirror/mode/javascript/javascript';
 import 'codemirror/mode/htmlmixed/htmlmixed';
 import 'backbone.marionette';

@@ -43,6 +43,7 @@ var settings = {
             // to attach to the window scope.
             { test: /jquery\.js$/, loader: 'expose?$' },
             { test: /jquery\.js$/, loader: 'expose?jQuery' },
+            { test: /codemirror\.js$/, loader: 'expose?CodeMirror' },
             { test: /modernizr\.js$/, loader: 'imports?this=>window' },
 
             {
