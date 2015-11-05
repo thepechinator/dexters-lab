@@ -46,13 +46,23 @@ var settings = {
             { test: /codemirror\.js$/, loader: 'expose?CodeMirror' },
             { test: /modernizr\.js$/, loader: 'imports?this=>window' },
 
-            {
-              test: /\.(nunj|nunjucks)$/,
-              loader: 'nunjucks-loader',
-              query: {
-                  config: __dirname + '/nunjucks.config.js'
-              }
+            // The latest nunjucks doesn't export stuff, so do it here.
+            { test: /nunjucks\/browser\/nunjucks(-slim)\.js$/, loader: 'exports?nunjucks' },
+
+            {   test: /\.nunj$/,
+                loader: 'nunjucks-loader',
+                query: {
+                    config: __dirname + '/nunjucks.config.js',
+                }
             }
+
+            // {
+            //   test: /\.(nunj)$/,
+            //   loader: 'nunjucks-loader',
+            //   query: {
+            //       config: __dirname + '/nunjucks.config.js'
+            //   }
+            // }
         ]
     },
     sassLoader: {
@@ -89,6 +99,7 @@ var settings = {
             // machina: 'machina/lib/machina',
             modernizr: 'modernizr/modernizr',
             // fastclick: 'fastclick/lib/fastclick'
+            nunjucks: 'nunjucks/browser/nunjucks-slim'
         }
     },
     plugins: [
@@ -99,7 +110,8 @@ var settings = {
 };
 
 settings.plugins.push(
-    new webpack.optimize.CommonsChunkPlugin({ // this one only pulls common stuff from vendors and main
+    new webpack.optimize.CommonsChunkPlugin({
+        // this one only pulls common stuff from vendors and main
         name: 'vendors',
         chunks: ['main']
     })

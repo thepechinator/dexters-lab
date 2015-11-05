@@ -1,4 +1,4 @@
-let uuid = require('lib/uuid');
+var uuid = require('./src/js/lib/uuid');
 
 module.exports = function(env) {
     env.addGlobal('globalVar', 'it works!');

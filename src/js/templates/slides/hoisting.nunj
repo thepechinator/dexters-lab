@@ -1,0 +1,60 @@
+{% extends './_layout.nunj' %}
+
+{% block content %}
+<div class="block-normal text-normal">
+  Hoisting? What's that?
+</div>
+
+<div class="slide">
+  <div>
+{% call build_example() %}
+// Refresher: var and hoisting
+
+// JavaScript's traditional 'var' keyword are
+// scoped to two things only: global and functions.
+// If you declare them in an if or loop statement,
+// they will be 'hoisted' to the top of your code.
+var jedi = 'anakin';
+
+function exampleOne() {
+  // This will output 'undefined'-- not 'anakin'--
+  // since the declaration in the if statement will
+  // be hoisted to the top of this function body.
+  // The assignment will remain in the if statement.
+  // See exampleTwo to see what I mean.
+  console.log('#1', jedi);
+  if (true) {
+    var jedi = "windu";
+  }
+}
+
+// Shows the syntax of what is really happening
+// from exampleOne.
+function exampleTwo() {
+  var jedi;
+  // Will output 'undefined' for jedi, similar to
+  // exampleOne.
+  console.log('#2', jedi);
+  if (true) {
+    jedi = 'windu';
+  }
+}
+
+function exampleThree() {
+  // Declaring no variables will output what you may
+  // have expected from the very beginning.
+  console.log('#3', jedi);
+
+  // The assignment here references the 'jedi' var
+  // in the outer scope.
+  jedi = 'windu';
+  console.log(jedi);
+}
+
+exampleOne();
+exampleTwo();
+exampleThree();
+{% endcall %}
+  </div>
+</div>
+{% endblock %}

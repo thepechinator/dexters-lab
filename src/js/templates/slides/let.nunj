@@ -1,0 +1,69 @@
+{% extends './_layout.nunj' %}
+
+{% block content %}
+<div class="block-normal text-normal">
+  let to the rescue!
+</div>
+
+<div class="slide">
+  <div>
+{% call build_example() %}
+// new keyword: let
+
+// This lets us have block-scoped variables.
+// Meaning, if we use it within things like an if, loop,
+// and other block statements, it will be visible only
+// in the scope it was defined. This is a change from
+// variables defined with 'var'.
+
+// Example 1
+// Take our first example from the var example.
+var myJedi = 'anakin';
+function exampleOne() {
+  // It displays 'anakin'-- not 'undefined'!
+  // Yay! Banzai! Huzzah!
+  console.log('#1', myJedi);
+
+  if (true) {
+    // Instead of using var, we use let, which
+    // keeps this variable scoped to only this block.
+    let myJedi = 'windu';
+  }
+
+  // It will still be 'anakin'
+  console.log(myJedi);
+}
+exampleOne();
+
+// Example 2
+// jedi is scoped to the if statement
+if (true) {
+  let jedi = 'obi-wan';
+}
+// This will fail because something is in its own block,
+// and 'let' just scopes it to that.
+try {
+  console.log(jedi);
+} catch (e) {
+  // Will output 'jedi is not defined'
+  console.log('#2 output', e.message);
+}
+
+// Example 3
+// Defining a block is as simple as
+// surrounding something in brackets!
+{
+  let jedi = 'obi-wan';
+}
+
+// This will still fail.
+try {
+  console.log(jedi);
+} catch (e) {
+  // Will output 'jedi is not defined'
+  console.log('#3 output', e.message);
+}
+{% endcall %}
+  </div>
+</div>
+{% endblock %}

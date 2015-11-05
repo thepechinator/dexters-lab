@@ -1,0 +1,19 @@
+{% extends './_layout.nunj' %}
+
+{% block content %}
+<dl>
+  <dt class="text-large">What is it?</dt>
+  <dd class="text-normal slide">
+    ECMAScript 6 / ECMAScript 2015 : major update to language since ES5 (2009)
+    <span style="display: none;">EMCAScript is a trademarked scripting language. JavaScript is one implementation of it.</span>
+  </dd>
+</dl>
+
+<dl class="slide">
+  <dt class="text-large">Status?</dt>
+  <dd class="text-normal">
+    Approved in June 2015. Implementation underway in browsers now.
+    Currently need a transpiler like Babel or Traceur to convert ES6 to ES5.
+  </dd>
+</dl>
+{% endblock %}

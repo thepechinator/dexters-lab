@@ -21,3 +21,22 @@
   left: auto;
   top: auto;
 }
+
+.flex-vert {
+  padding: 20px;
+  background: #eee;
+
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+
+  align-items: center;
+}
+
+.full-height {
+  height: 100%;
+}

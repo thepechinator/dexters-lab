@@ -4,7 +4,11 @@
 
 <div class="slides">
 {% include './slides/intro.nunj' %}
+{% include './slides/what-is-it.nunj' %}
+{% include './slides/where-using.nunj' %}
 {% include './slides/basics.nunj' %}
+{% include './slides/hoisting.nunj' %}
+{% include './slides/let.nunj' %}
 {% include './slides/const.nunj' %}
 {% include './slides/strings.nunj' %}
 {% include './slides/arrows.nunj' %}

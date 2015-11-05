@@ -1,7 +1,7 @@
 {% extends './_layout.nunj' %}
 
 {% block content %}
-  <h6>Why bother using this stuff?</h6>
+  <h5>Why bother using this stuff?</h5>
 
   <ul>
     <li class="text-normal slide">
@@ -11,15 +11,6 @@
       Continued education
     </li>
   </ul>
-
-  <div class="slide">
-    <div>
-  {% call build_example() %}
-// Set example
-
-  {% endcall %}
-    </div>
-  </div>
 
   <ul class="slide">
     ref:

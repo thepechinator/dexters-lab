@@ -63,6 +63,7 @@ export default class SuperDeck {
       }
 
       if (!this.animatedExit || this.animating) {
+        console.log('animating deck.beforeChange');
         event.preventDefault();
 
         if (!this.animatedExit) {
@@ -79,7 +80,7 @@ export default class SuperDeck {
           $('body').scrollTop(0);
           TweenMax.to(this.slideParentMap.get($fromSlide[0]), 0.5,
             {css: {right: moveDir}, onComplete: () => {
-              // console.log('animation complete');
+              console.log('animation complete');
               this.animatedExit = true;
               this.animating = false;
               this.navEngine('go', to);
