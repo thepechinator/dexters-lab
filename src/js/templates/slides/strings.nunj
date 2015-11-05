@@ -3,61 +3,14 @@
 {% block content %}
   <h1>Template strings</h1>
 
-  <div class="block-normal text-normal slide">
-    multiline strings, variable interpolation
-  </div>
-
-  <div class="block-normal text-normal slide">
-    Before
-  </div>
-
-  <div class="slide">
-    <div>
-  {% call build_example() %}
-// strings example
-
-// First, consider ES5.
-(function() {
-  // We've all done it at some point: making some
-  // html string we need to inject into our page.
-  // Maybe it's a library that creates its own HTML
-  // on the fly and needs to insert into a specified
-  // element.
-  //
-  // If we want to make it readable,
-  // we may do something like the following.
-  var htmlString =
-      '<div class="row">' +
-        '<div class="column small-12">' +
-          '<a class="button normal small-12">I am a button</a>' +
-        '</div>' +
-      '</div>';
-
-  // $$ is a special reserved variable that
-  // corresponds to a jQuery object representing
-  // the container under the HTML Output tab.
-  // Go crazy with it.
-  $$.html('#1' + htmlString);
-}());
-
-// How about variable interpolation? This is how you'd
-// do it in ES5.
-(function() {
-  var superman = 'Clark Kent';
-  var batman = 'Bruce Wayne';
-
-  var propString = 'superman is ' + superman +
-    '\nand batman is ' + batman;
-
-  console.log('#1', propString);
-}());
-  {% endcall %}
-    </div>
-  </div>
-
-  <div class="block-normal text-normal slide">
-    Make way for template strings!
-  </div>
+  <ul>
+    <li class="text-normal slide">
+      multiline strings
+    </li>
+    <li class="text-normal slide">
+      variable interpolation
+    </li>
+  </ul>
 
   <div class="slide">
     <div>
@@ -65,8 +18,7 @@
 // template strings example
 
 // Example 1
-// Let's revisit the first example in the strings example.
-(function() {
+function exampleOne() {
   // With the help of backticks (`), a multiline string is as easy
   // as this. I'm not scared of you anymore, multiline html
   // strings!
@@ -86,11 +38,11 @@
   // the container under the HTML Output tab.
   // Go crazy with it.
   $$.html('#1' + htmlString);
-}());
+};
 
 // Example 2
 // How about variable interpolation? Piece of cake.
-(function() {
+function exampleTwo() {
   var superman = 'Clark Kent';
   var batman = 'Bruce Wayne';
 
@@ -101,14 +53,14 @@
 and batman is ${batman}`;
 
   console.log('#2', propString);
-}());
+};
 
 // Example 3
 // There is also the concept of tagged template strings.
 // It lets you prepend a function name to a template string,
 // which then has access to an array of all the regular strings
 // and the variables in the template string.
-(function() {
+function exampleThree() {
   var superman = 'Clark Kent';
   var batman = 'Bruce Wayne';
 
@@ -130,7 +82,11 @@ and batman is ${batman}`;
   // Note how propString is equal to whatever was returned
   // by the tag function.
   console.log(propString);
-}());
+};
+
+// exampleOne();
+// exampleTwo();
+// exampleThree();
   {% endcall %}
     </div>
   </div>

@@ -5,7 +5,13 @@
 
   <ul>
     <li class="text-normal slide">
-      Promises
+      Use with
+    </li>
+    <li class="text-normal slide">
+      asynchronous requests
+    </li>
+    <li class="text-normal slide">
+      deferred operations
     </li>
   </ul>
 
@@ -15,9 +21,9 @@
 // Promises example
 
 // The concept of a promise is it represents an
-// operation that has not yet completed, but once
-// it has, it gives you a way to run code on
-// completion. It is perfect for deferred or
+// operation that needs to wait for something to happen, and
+// gives you a way to run code on completion or failure of that
+// something. It is ideal for deferred or
 // asynchronous operations.
 //
 // It has three states:
@@ -60,7 +66,11 @@ function promiseExample(shouldResolve=true) {
   });
 }
 
+// Success example that invokes the callback
+// in .then
 // promiseExample();
+// Rejection example that invokes the callback
+// in .catch
 // promiseExample(false);
   {% endcall %}
     </div>

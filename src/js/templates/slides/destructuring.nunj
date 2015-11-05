@@ -5,7 +5,10 @@
 
   <ul>
     <li class="text-normal slide">
-      Destructuring
+      Assign vars from arrays/objects
+    </li>
+    <li class="text-normal slide">
+      Multiple return values
     </li>
   </ul>
 
@@ -16,23 +19,42 @@
 
 // Basic concept
 
+let a, b;
+
+// Example 1
 // destructure on an array
-let [a, b] = [3, 4];
-console.log('#1', a, b);
+function exampleOne() {
+  // Note the square brackets
+  // around the variable names.
+	[a, b] = [3, 4];
 
-// parentheses is necessary here when we aren't
-// initializing a and b and want to destructure
-// on an object
-({firstKey: a, secondKey: b} = {firstKey: 'something', secondKey: 'somewhere'});
-console.log('#2', a, b);
-
-// multiple return values
-function seekTargets() {
-	return [1, 2];
+  console.log('#1', a, b);
 }
 
-[a, b] = seekTargets();
-console.log('#3', a, b);
+// Example 2
+// destructure on an object
+function exampleTwo() {
+  // parentheses is necessary here when we aren't
+  // initializing a and b and want to destructure
+  // on an object
+  ({firstKey: a, secondKey: b} = {firstKey: 'something', secondKey: 'somewhere'});
+  console.log('#2', a, b);
+}
+
+// Example 3
+// multiple return values
+function exampleThree() {
+  function seekTargets() {
+    return [1, 2];
+  }
+
+  [a, b] = seekTargets();
+  console.log('#3', a, b);
+}
+
+// exampleOne();
+// exampleTwo();
+// exampleThree();
   {% endcall %}
     </div>
   </div>

@@ -1,21 +1,24 @@
 {% extends './_layout.nunj' %}
 
 {% block content %}
-<div class="text-large">
-  What is it?
-</div>
+
+<h1>
+  Why const?
+</h1>
+
 <ul>
   <li class="text-normal slide">
-    ECMAScript 6 / ECMAScript 2015
+    Make obvious variable should not be modified
   </li>
   <li class="text-normal slide">
-    Major update since ES5 (2009)
+    event names
   </li>
   <li class="text-normal slide">
-    Finalized in June 2015
+    breakpoints
   </li>
   <li class="text-normal slide">
-    Babel or Traceur to transpile ES5 => ES6
+    mapping values
   </li>
 </ul>
+
 {% endblock %}

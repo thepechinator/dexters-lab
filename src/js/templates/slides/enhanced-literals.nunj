@@ -3,15 +3,11 @@
 {% block content %}
   <h5>Enhanced object literals</h5>
 
-  <div class="slide text-large">
-    Object literal? What is that?
-  </div>
-
   <div class="slide">
     <div>
   {% call build_example() %}
 // Enhanced object literal example
-(function() {
+function exampleOne() {
   // What is an object literal you ask?
   // It's the technical term for the following.
   // That's it!
@@ -51,7 +47,9 @@
     }
   };
   es5Obj[prop] = 'protoss';
-}());
+};
+
+// exampleOne();
   {% endcall %}
     </div>
   </div>

@@ -1,14 +1,11 @@
 {% extends './_layout.nunj' %}
 
 {% block content %}
-  <h1>Set</h1>
+  <h1>Set, WeakSet</h1>
 
   <ul>
     <li class="text-normal slide">
-      Set
-    </li>
-    <li class="text-normal slide">
-      WeakSet
+      No duplicate values
     </li>
   </ul>
 
@@ -21,39 +18,65 @@
 // You can loop over the inserted objects in the
 // order in which they came in.
 var set = new Set();
-// Add basic values.
-set.add(5);
-set.add(1);
-set.add(7);
-set.add(8);
-set.add(6);
-set.add(5);
-// Notice how 5 isn't duplicated.
-// Values must be unique.
-console.log(set);
 
-// Adding objects.
-set.add({a: 'a'});
-set.add({a: 'a'});
-
-// Note though the values appear identical,
-// they are both added since they are technically
-// not the same object.
-console.log(set);
-
-// Versus doing this, which results in the 'obj'
-// variable being added once.
-let obj = {b: 'b'};
-set.add(obj);
-set.add(obj);
-console.log(set);
-
-// You can also iterate over a set.
-// Note how they get iterated in the right order.
-console.log('start of iterator');
-for (let value of set) {
-	console.log(value);
+// Example 1
+// Add basic values
+function exampleOne() {
+  set.add(5);
+  set.add(1);
+  set.add(7);
+  set.add(8);
+  set.add(6);
+  set.add(5);
+  // Notice how 5 isn't duplicated.
+  // Values must be unique.
+  console.log('#1', set);
 }
+
+// Example 2
+// Add unique objects
+function exampleTwo() {
+  // Adding objects.
+  set.add({a: 'a'});
+  set.add({a: 'a'});
+
+  // Note though the values appear identical,
+  // they are both added since they are technically
+  // not the same object.
+  console.log('#2', set);
+}
+
+// Example 3
+// Shows how you can't add the same object.
+function exampleThree() {
+  // Versus doing this, which results in the 'obj'
+  // variable being added once.
+  let obj = {b: 'b'};
+  set.add(obj);
+  set.add(obj);
+  console.log('#3', set);
+}
+
+// Example 4
+// Shows how you can iterate over a set.
+function exampleFour() {
+  // You can also iterate over a set.
+  // Note how they get iterated in the right order.
+  console.log('#4');
+  for (let value of set) {
+    console.log(value);
+  }
+}
+
+// exampleOne();
+// exampleTwo();
+// exampleThree();
+// exampleFour();
+
+// WeakSet is a collection of object values only.
+// Similar to WeakMap, they are not iterable and
+// the values are up for garbage collection if nothing
+// else references them.
   {% endcall %}
     </div>
   </div>

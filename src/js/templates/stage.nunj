@@ -1,15 +1,15 @@
 {% from './example.nunj' import 'build_example' %}
 
-{% set slides = ['intro', 'basics', 'strings'] %}
-
 <div class="slides">
 {% include './slides/intro.nunj' %}
+{% include './slides/roadmap.nunj' %}
 {% include './slides/what-is-it.nunj' %}
 {% include './slides/where-using.nunj' %}
 {% include './slides/basics.nunj' %}
-{% include './slides/hoisting.nunj' %}
+{# {% include './slides/hoisting.nunj' %} #}
 {% include './slides/let.nunj' %}
 {% include './slides/const.nunj' %}
+{% include './slides/const-why.nunj' %}
 {% include './slides/strings.nunj' %}
 {% include './slides/arrows.nunj' %}
 {% include './slides/default-params.nunj' %}
@@ -26,4 +26,5 @@
 {% include './slides/generators.nunj' %}
 {% include './slides/iterators.nunj' %}
 {% include './slides/why.nunj' %}
+{% include './slides/more-resources.nunj' %}
 </div>

@@ -3,8 +3,8 @@
 {% block content %}
   {# TODO: special effects or something #}
   <div class="flex-vert">
-    <div style="">
-      Blah
-    </div>
+    <h1>
+      ES6
+    </h1>
   </div>
 {% endblock %}

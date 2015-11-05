@@ -3,12 +3,6 @@
 {% block content %}
   <h5>Rest parameters</h5>
 
-  <ul>
-    <li class="text-normal slide">
-      Rest parameters
-    </li>
-  </ul>
-
   <div class="slide">
     <div>
   {% call build_example() %}
@@ -18,11 +12,22 @@
 // No more arguments nonsense
 // Pass in unlimited amount of unexpected
 // parameters. Can access them as a real
-// array. No slicing nonsense required.
+// array. No slicing required.
 function duel(action, ...targets) {
+  // You may be wondering, is using arguments that bad?
+  // Well, there are a few reasons why it's not ideal:
+  // - arguments is not a true array
+  // - arguments includes the expected parameters
+	// - to extract the values from arguments, you need
+  // to write additional code
   console.log('#1', targets);
 }
-duel('lightsaber', 'luke', 'anakin', 'leia', 'chewbacca', 'han');  {% endcall %}
+function exampleOne() {
+	duel('lightsaber', 'luke', 'anakin', 'leia', 'chewbacca', 'han');
+}
+
+// exampleOne();
+  {% endcall %}
     </div>
   </div>
 

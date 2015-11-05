@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="block-normal text-normal">
-  let to the rescue!
+  let : hello block scoping
 </div>
 
 <div class="slide">
@@ -33,37 +33,53 @@ function exampleOne() {
   // It will still be 'anakin'
   console.log(myJedi);
 }
-exampleOne();
 
 // Example 2
 // jedi is scoped to the if statement
-if (true) {
-  let jedi = 'obi-wan';
-}
-// This will fail because something is in its own block,
-// and 'let' just scopes it to that.
-try {
-  console.log(jedi);
-} catch (e) {
-  // Will output 'jedi is not defined'
-  console.log('#2 output', e.message);
+function exampleTwo() {
+  if (true) {
+    let jedi = 'obi-wan';
+  }
+  // This will fail because something is in its own block,
+  // and 'let' just scopes it to that.
+  try {
+    console.log(jedi);
+  } catch (e) {
+    // Will output 'jedi is not defined'
+    console.log('#2 output', e.message);
+  }
 }
 
 // Example 3
 // Defining a block is as simple as
 // surrounding something in brackets!
-{
-  let jedi = 'obi-wan';
+function exampleThree() {
+  {
+    let jedi = 'obi-wan';
+  }
+
+  // This will still fail.
+  try {
+    console.log(jedi);
+  } catch (e) {
+    // Will output 'jedi is not defined'
+    console.log('#3 output', e.message);
+  }
 }
 
-// This will still fail.
-try {
-  console.log(jedi);
-} catch (e) {
-  // Will output 'jedi is not defined'
-  console.log('#3 output', e.message);
-}
+// exampleOne();
+// exampleTwo();
+// exampleThree();
 {% endcall %}
   </div>
 </div>
+
+<ul>
+  <li class="text-small slide">
+    ref:
+    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let" target="_blank">
+      https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let
+    </a>
+  </li>
+</ul>
 {% endblock %}

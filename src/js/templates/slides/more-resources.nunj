@@ -1,0 +1,23 @@
+{% extends './_layout.nunj' %}
+
+{% block content %}
+  <h1>More Resources</h1>
+
+  <ul class="slide">
+    <li class="text-normal">
+      <a href="https://github.com/thepechinator/dexters-lab" target="_blank">
+        This Repository. Play/learn.
+      </a>
+    </li>
+    <li class="text-normal">
+      <a href="http://es6-features.org/" target="_blank">
+        http://es6-features.org/
+      </a>
+    </li>
+    <li class="text-normal">
+      <a href="https://esdiscuss.org/" target="_blank">
+        https://esdiscuss.org/
+      </a>
+    </li>
+  </ul>
+{% endblock %}

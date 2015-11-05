@@ -5,7 +5,7 @@
 
   <ul>
     <li class="text-normal slide">
-      Modules
+      Better dependency management
     </li>
   </ul>
 
@@ -13,8 +13,12 @@
     <div>
   {% call build_example() %}
 // Modules example
-// This is the pattern
-// How to make a module to be imported.
+// This code will throw a compile error since we
+// haven't set up a system telling it where all these
+// things are. Example is mainly to show how to do things.
+
+// How to make a module which can be imported.
+//
 // The default export pattern
 // Example file path: './lib/ui/cool.js'
 export default class MyCoolClass {};
@@ -32,7 +36,8 @@ module.exports = {
 };
 import {methodOne, methodTwo} from './lib/ui/cool';
 
-// Import as alias
+// Import as alias. Useful for long names or method names
+// that collide with the namespace you're importing into.
 function methodOne() {}
 function methodTwo() {}
 module.exports = {
@@ -40,7 +45,7 @@ module.exports = {
   methodTwo: methodTwo
 };
 import {longMethodNameThatIsRidiculous as saneMethod} from './lib/ui/cool';
-      {% endcall %}
+  {% endcall %}
     </div>
   </div>
 

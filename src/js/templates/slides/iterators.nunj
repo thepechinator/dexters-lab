@@ -1,41 +1,37 @@
 {% extends './_layout.nunj' %}
 
 {% block content %}
-  <h1>Iterators, for of, generators</h1>
-
-  <ul>
-    <li class="text-normal slide">
-      Iterators
-    </li>
-    <li class="text-normal slide">
-      For of
-    </li>
-    <li class="text-normal slide">
-      Generators
-    </li>
-  </ul>
+  <h1>for of</h1>
 
   <div class="slide">
     <div>
   {% call build_example() %}
 // Iterators example
 
-// for...in iterates over property names
-// for...of iterates over values
+// refresher: existing for...in iterates over property names
+// new for...of iterates over values
 
 // easy enough
 let arr = [5, 3, 1, 9, 10];
 arr.myProp = 'boo';
-console.log('looping with for...in');
-// Point proven. The myProp will show up here.
-for (let value in arr) {
-  console.log(value);
+
+function exampleOne() {
+  console.log('#1', 'looping with for...of');
+  for (let value of arr) {
+    console.log(value)
+  }
 }
 
-console.log('looping with for...of');
-for (let value of arr) {
-	console.log(value)
+function exampleTwo() {
+  console.log('', '#2', 'looping with for...in');
+  // Point proven. The myProp will show up here.
+  for (let value in arr) {
+    console.log(value);
+  }
 }
+
+// exampleOne();
+// exampleTwo();
   {% endcall %}
     </div>
   </div>

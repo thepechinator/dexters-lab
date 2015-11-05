@@ -1,0 +1,66 @@
+{% extends './_layout.nunj' %}
+
+{% block content %}
+
+<div class="text-normal">
+  The old way
+</div>
+
+<div class="slide">
+  <div>
+{% call build_example() %}
+// arrow function expression example
+$$.html('<a class="button normal small-12 js-one">Example One</a>');
+
+// First, consider ES5.
+
+// Example 1
+(function() {
+'use strict';
+
+// This will be undefined since we are running
+// in strict mode. In non-strict mode in ES5,
+// the 'this' here would actually be window.
+console.log('#1', this);
+$$.find('.js-one').click(function(event) {
+  // The 'this' here refers to the element
+  // we clicked on-- not undefined.
+  console.log('#1 clicked this:', this);
+});
+}());
+
+// Example 2
+// ES5 ways in forcing 'this' to be something we're expecting.
+(function() {
+function SuperMan() {
+  this.actions = ['fly', 'punch', 'kick', 'lazers'];
+  this.enemy = 'Lex Luthor';
+}
+
+SuperMan.prototype.kickAss = function() {
+  // Since we are using .bind, the 'this' in the forEach
+  // callback is what we're expecting. Other approaches
+  // are:
+  //
+  // 1) Using something like underscore's bind.
+  //
+  // 2) Setting something like
+  // var _self = 'this' to reference in the function,
+  // which is perfectly legit if you need to refer
+  // to the callback's default 'this' and the outer 'this'.
+  //
+  // 3) You can also use .bind and .apply to set 'this' along
+  // with arguments you want to pass into a function.
+  console.log('#2');
+  this.actions.forEach(function(value, index) {
+    console.log(`SuperMan can ${value} ${this.enemy}`);
+  }.bind(this));
+}
+
+new SuperMan().kickAss();
+}());
+{% endcall %}
+  </div>
+</div>
+
+{% endblock %}

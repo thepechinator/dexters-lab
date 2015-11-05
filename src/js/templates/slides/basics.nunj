@@ -8,11 +8,10 @@
       Implicit 'strict' mode
     </li>
     <li class="text-normal slide">
-      let, const
+      declaration: let
+    </li>
+    <li class="text-normal slide">
+      declaration: const
     </li>
   </ul>
-
-  <div class="block-normal text-normal slide">
-    let finally provides variables with lexical scope! No more hoisting!
-  </div>
 {% endblock %}

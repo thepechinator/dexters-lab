@@ -7,12 +7,6 @@
     <li class="text-normal slide">
       New data structures
     </li>
-    <li class="text-normal slide">
-      Map
-    </li>
-    <li class="text-normal slide">
-      WeakMap
-    </li>
   </ul>
 
   <div class="slide">
@@ -36,7 +30,7 @@
 // what's actually happening behind the scenes is
 // when an object gets a key that isn't a String or
 // Symbol, it runs .toString() on it, resulting
-// in [Object object] as the key. To show this point:
+// in [Object object] as the key. To prove this point:
 
 function objectKeyString() {
 	var obj = {'name': 'alpha'};
@@ -61,21 +55,35 @@ function createMap() {
   map.set(obj3, 'I am the omega');
   map.set(obj1, 'I am alpha');
 
-  // Easily retrieve based on the key with .get
-  console.log("map.get(obj3)", map.get(obj3));
+  function exampleOne() {
+    // Easily retrieve based on the key with .get
+    console.log('#1', 'map.get(obj3)', map.get(obj3));
 
-  // Get the size.
-  console.log("map.size", map.size);
-
-  // Loop in the order the values were added.
-  for (var [key, value] of map) {
-  	console.log('key', key, 'value', value);
+    // Get the size.
+  	console.log('map.size', map.size);
   }
+
+  function exampleTwo() {
+    console.log('#2');
+    // Loop in the order the values were added.
+    for (var [key, value] of map) {
+      console.log('key', key, 'value', value);
+    }
+  }
+
+  // exampleOne();
+  // exampleTwo();
 }
 
-objectKeyString();
+// objectKeyString();
 createMap();
-  {% endcall %}
+
+// WeakMaps are a stripped-down version of Maps.
+// - Keys are held weakly. Meaning, they are up for
+// for garbage collection if nothing else references them.
+// - Only object keys
+// - Not iterable
+      {% endcall %}
     </div>
   </div>
 

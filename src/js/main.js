@@ -4,8 +4,8 @@
 // Third party stuff.
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/theme/vibrant-ink.css';
+
 import $ from 'jquery';
-// import CodeMirror from 'codemirror/lib/codemirror';
 import 'codemirror/mode/javascript/javascript';
 import 'codemirror/mode/htmlmixed/htmlmixed';
 import 'backbone.marionette';
@@ -37,7 +37,7 @@ $('.js-example').each(function(index, el) {
   weakmap.set($(this).find('.tabs')[0], repl);
 });
 
-// Initialize foundation stuff
+// Mainly for creating the tabs.
 $(document).foundation();
 
 // Need to keep track of this, so we can refresh the editor since

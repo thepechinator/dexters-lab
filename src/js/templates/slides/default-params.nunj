@@ -8,25 +8,24 @@
   {% call build_example() %}
 // Default function parameters example
 
-(function() {
-  // Example 1
-  // Bam. Just any other language.
-  // NOTE: The value is evaluated at call time.
-	function exampleOne(param, defaultParam="I have the POWERRRR!!") {
-    console.log('#1', defaultParam);
-  }
+// Example 1
+// Bam. Just any other language.
+// NOTE: The value is evaluated at call time.
+function exampleOne(param, defaultParam="I have the POWERRRR!!") {
+  // 'I have the POWERRRR!!' is a reference to He-Man
+  console.log('#1', defaultParam);
+}
 
-  // Example 2
-  // Another neat thing is default parameters to
-  // any that follow them.
-  function exampleTwo(param, cool="I am cool", cooler=cool+" but the person after me is cooler") {
-		console.log('#2', cooler);
-  }
+// Example 2
+// Another neat thing is default parameters to
+// any that follow them.
+function exampleTwo(param, cool="I am cool", cooler=cool+", but the person after me is cooler") {
+  console.log('#2', cooler);
+}
 
-  exampleOne();
-  exampleTwo();
-}());
-  {% endcall %}
+// exampleOne();
+// exampleTwo();
+{% endcall %}
     </div>
   </div>
 

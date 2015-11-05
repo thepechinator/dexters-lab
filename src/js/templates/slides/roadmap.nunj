@@ -1,22 +1,26 @@
 {% extends './_layout.nunj' %}
 
 {% block content %}
-  <h1>Why use ES6</h1>
+  <h1>Roadmap</h1>
 
   <ul>
     <li class="text-normal slide">
-      It IS happening!
+      The What
     </li>
     <li class="text-normal slide">
-      Continued education
+      Basic ES6
     </li>
     <li class="text-normal slide">
-      More marketable
+      More interesting additions
     </li>
     <li class="text-normal slide">
-      <a href="http://chimera.labs.oreilly.com/books/1234000001623/ch01.html">
-        Because
-      </a>
+      Disclaimer: not exhaustive
+    </li>
+    <li class="text-normal slide">
+      Lots to cover.
+    </li>
+    <li class="text-normal slide">
+      Let's go!
     </li>
   </ul>
 {% endblock %}

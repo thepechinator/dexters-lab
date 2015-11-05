@@ -7,6 +7,9 @@
     <li class="text-normal slide">
       New primitive type
     </li>
+    <li class="text-normal slide">
+      Unique
+    </li>
   </ul>
 
   <div class="slide">
@@ -66,11 +69,13 @@ function exampleThree() {
       return BREAKPOINT_CHANGE;
   	}
   }
+
+  console.log(BreakpointEvent.BREAKPOINT_CHANGE);
 }
 
-exampleOne();
-exampleTwo();
-exampleThree();
+// exampleOne();
+// exampleTwo();
+// exampleThree();
   {% endcall %}
     </div>
   </div>

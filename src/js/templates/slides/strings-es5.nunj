@@ -1,0 +1,52 @@
+{% extends './_layout.nunj' %}
+
+{% block content %}
+<div class="block-normal text-normal slide">
+  Before
+</div>
+
+<div class="slide">
+  <div>
+{% call build_example() %}
+// strings example
+
+// First, consider ES5.
+(function() {
+// We've all done it at some point: making some
+// html string we need to inject into our page.
+// Maybe it's a library that creates its own HTML
+// on the fly and needs to insert into a specified
+// element.
+//
+// If we want to make it readable,
+
+// we may do something like the following.
+var htmlString =
+    '<div class="row">' +
+      '<div class="column small-12">' +
+        '<a class="button normal small-12">I am a button</a>' +
+      '</div>' +
+    '</div>';
+
+// $$ is a special reserved variable that
+// corresponds to a jQuery object representing
+// the container under the HTML Output tab.
+// Go crazy with it.
+$$.html('#1' + htmlString);
+}());
+
+// How about variable interpolation? This is how you'd
+// do it in ES5.
+(function() {
+var superman = 'Clark Kent';
+var batman = 'Bruce Wayne';
+
+var propString = 'superman is ' + superman +
+  '\nand batman is ' + batman;
+
+console.log('#1', propString);
+}());
+{% endcall %}
+  </div>
+</div>
+{% endblock %}
