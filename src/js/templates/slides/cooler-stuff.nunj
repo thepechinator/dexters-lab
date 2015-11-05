@@ -1,0 +1,20 @@
+{% extends './_layout.nunj' %}
+
+{% block content %}
+  <h1>Up next</h1>
+
+  <ul>
+    <li class="text-normal slide">
+      New primitive
+    </li>
+    <li class="text-normal slide">
+      New data structures
+    </li>
+    <li class="text-normal slide">
+      New operators
+    </li>
+    <li class="text-normal slide">
+      Let's go!
+    </li>
+  </ul>
+{% endblock %}

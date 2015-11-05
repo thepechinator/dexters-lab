@@ -17,6 +17,8 @@ export default class BabelREPL {
     this.$output = $context.find('.js-output');
     this.$toggleFullScreen = $context.find('.js-toggle-fs');
 
+    // Create the CodeMirror editors which give us nice things
+    // like line number, key maps, and syntax highlighting.
     this.editorCompiled = CodeMirror.fromTextArea($context.find('.js-demo-compiled')[0], {
       mode: "javascript",
       lineNumbers: true,
@@ -57,6 +59,9 @@ export default class BabelREPL {
     });
   }
 
+  // The following methods are taken from Babel's REPL
+  // code, though many of them have been modified to
+  // fit our needs.
   refresh() {
     // console.log('refresh');
     this.editor.refresh();
@@ -65,7 +70,6 @@ export default class BabelREPL {
 
   handleCodeChange(instance, changeObj) {
     this.compile(instance.getValue());
-    // console.log('handleCodeChange!', instance.getValue());
   }
 
   clear() {
