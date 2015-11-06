@@ -60,7 +60,7 @@ function exampleThree() {
   </div>
 
   <ul class="slide">
-    ref:
+    <span class="text-small">ref:</span>
     <li class="text-small">
       <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment" target="_blank">
         https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment

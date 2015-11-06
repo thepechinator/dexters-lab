@@ -54,7 +54,7 @@ function exampleTwo() {
 
   <ul>
     <li class="text-small slide">
-      ref:
+      <span class="text-small">ref:</span>
       <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const" target="_blank">
         https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const
       </a>
