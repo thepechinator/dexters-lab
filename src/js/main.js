@@ -56,4 +56,19 @@ $('.tabs').on('toggled', function (event, tab) {
 
 // Finally, create our deck which has some decent animations.
 new SuperDeck($('.slides'));
-// new Particle().create();
+
+// Cheap way to get the particles to appear/disappear.
+var particle;
+$('.js-es6').click(function() {
+  if (typeof particle === 'undefined') {
+    particle = new Particle();
+  }
+
+  if (!particle.playing) {
+    $('body').css('overflow-y', 'hidden');
+    particle.create();
+  } else {
+    $('body').css('overflow-y', 'auto');
+    particle.destroy();
+  }
+});
