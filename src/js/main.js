@@ -4,6 +4,7 @@
 // Third party stuff.
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/theme/vibrant-ink.css';
+import 'codemirror/theme/seti.css';
 
 import $ from 'jquery';
 import 'codemirror/mode/javascript/javascript';
@@ -15,6 +16,9 @@ import 'sass/main.scss';
 import BabelREPL from 'babel/repl';
 import Stage from 'views/stage';
 import SuperDeck from './views/super-deck';
+
+// effects stuff
+import Particle from 'effects/particle';
 
 // Need to override this to make it work with templates.
 Backbone.Marionette.Renderer.render = function( template, data ) {
@@ -52,3 +56,4 @@ $('.tabs').on('toggled', function (event, tab) {
 
 // Finally, create our deck which has some decent animations.
 new SuperDeck($('.slides'));
+// new Particle().create();

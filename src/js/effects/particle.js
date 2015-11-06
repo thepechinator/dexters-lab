@@ -2,21 +2,27 @@ import $ from 'jquery';
 
 export default class Particle {
     constructor() {
+      this.concepts = [
+        'arrow functions', 'let', 'classes', 'const', 'default parameters',
+        'destructuring', 'for of', 'promises', 'map', 'weakmap', 'set', 'weakset',
+        'modules', 'rest', 'spread', 'template strings'
 
+      ]
     }
 
     create() {
-        createEffect();
+        this.createEffect();
     }
 
     createEffect() {
-        var density = 50,
+        var density = 10,
             speed = 1,
             winHeight = $(window).height(),
             start = {yMin:winHeight + 50, yMax:winHeight + 50, xMin:100, xMax:200, scaleMin:0.1, scaleMax:0.25, opacityMin:0.2, opacityMax:0.4},
             mid = {yMin:winHeight * 0.3, yMax:winHeight * 0.5, xMin:75, xMax:400, scaleMin:0.2, scaleMax:1, opacityMin:0.4, opacityMax:1},
             end = {yMin:-180, yMax:-180, xMin:20, xMax:700, scaleMin:0.1, scaleMax:1, opacityMin:0.2, opacityMax:0.7},
-            colors = ["#003ed9","#00e6d7","#fb8100","#ef0000","#e849e0","#c7e105","#1bd51b","#2044e0"];
+            colors = ["#003ed9","#00e6d7","#fb8100","#ef0000","#e849e0","#c7e105","#1bd51b","#2044e0",
+              "#003ed9","#00e6d7","#fb8100","#ef0000","#e849e0","#c7e105","#1bd51b","#2044e0"];
 
         function range(map, prop) {
             var min = map[prop + "Min"],
@@ -48,7 +54,7 @@ export default class Particle {
         var body = $("body"),
             i, particle;
         for (i = 0; i < density; i++) {
-            spawn( $("<div />", {id:"particle"+i}).addClass("particle").text( Math.round( Math.random() * 9 )).appendTo(body) );
+            spawn( $("<div />", {id:"particle"+i}).addClass("particle").text( this.concepts[Math.round( Math.random() * 15 )]).appendTo(body) );
         }
     }
 }

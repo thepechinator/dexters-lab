@@ -15,7 +15,7 @@
     Finalized in June 2015
   </li>
   <li class="text-normal slide">
-    Babel or Traceur to transpile ES5 => ES6
+    <a href="https://babeljs.io/" target="_blank">Babel</a> or <a href="https://github.com/google/traceur-compiler" target="_blank">Traceur</a>
   </li>
 </ul>
 {% endblock %}

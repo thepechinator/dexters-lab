@@ -55,7 +55,7 @@ function exampleTwo() {
   </div>
 
   <ul class="slide">
-    ref:
+    <span class="text-small">ref:</span>
     <li class="text-small">
       <a href="https://hacks.mozilla.org/2015/06/es6-in-depth-arrow-functions/" target="_blank">
         https://hacks.mozilla.org/2015/06/es6-in-depth-arrow-functions/

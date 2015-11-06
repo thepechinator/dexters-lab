@@ -50,7 +50,7 @@ function exampleOne() {
   console.log(generator.next().value);
 }
 
-exampleOne();
+// exampleOne();
   {% endcall %}
     </div>
   </div>

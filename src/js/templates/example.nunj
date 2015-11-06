@@ -4,7 +4,7 @@
 
 <div class="row block-normal editor js-example">
   <div class="column small-8 block-full-height">
-    <a href="javascript: void(0)" class="button tiny block-flush js-toggle-fs" style="float: right;">Full Screen</a>
+    <a href="javascript: void(0)" class="button tiny block-flush js-toggle-fs" style="float: right; font-size: 15px;">Full Screen</a>
     <ul class="tabs" data-tab>
       <li class="tab-title active"><a href="#panel-{{id1}}">Live ES6 Editor</a></li>
       <li class="tab-title"><a href="#panel-{{id2}}">Compiled JS</a></li>

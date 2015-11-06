@@ -1,9 +1,10 @@
 // example styles
 
 .example-output {
-  background: #fff;
-  border-radius: 5px 5px 0 0;
+  background: #151718;
+  border-radius: 0 5px 5px 5px;
   border: 1px solid #eee;
+  color: #CFD2D1;
   min-height: 290px;
   height: 100%;
   overflow: auto;
@@ -11,9 +12,10 @@
 }
 
 .example-console {
-  background: #fff;
+  background: #151718;
   border: 1px solid #ddd;
-  border-radius: 0 0 5px 5px;
+  border-radius: 0 5px 5px 5px;
+  color: #CFD2D1;
   min-height: 50px;
   height: 100%;
   overflow: auto;

@@ -4,6 +4,7 @@
 
 import $ from 'jquery';
 import _ from 'underscore';
+
 import 'codemirror/lib/codemirror';
 import 'codemirror/addon/comment/comment';
 import 'codemirror/keymap/sublime';
@@ -25,7 +26,7 @@ export default class BabelREPL {
       matchBrackets: true,
       tabSize: 2,
       readOnly: true,
-      theme: 'vibrant-ink',
+      theme: 'seti',
       keyMap: 'sublime'
     });
 
@@ -34,7 +35,7 @@ export default class BabelREPL {
       lineNumbers: true,
       matchBrackets: true,
       tabSize: 2,
-      theme: 'vibrant-ink',
+      theme: 'seti',
       keyMap: 'sublime'
     });
 
