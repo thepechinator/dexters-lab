@@ -32,33 +32,43 @@
 // - rejected : operation failure
 
 // Many libraries like jQuery have an implementation of Promises,
-// but with ES6 it provides a way to standardize the implementation
-// of that concept.
+// but until 3.0 (supposedly) there are some gotchas with their
+// implementation. Specifically, thrown errors are not handled
+// as expected. It is also not fully compliant to the
+// Promise/A+ spec, which other Promise libraries (like bluebird)
+// follow.
+//
+// Good thing we have built-in promises in ES6 promises that
+// standardizes the implementation of that concept.
+// If it's still lacking for you, definitely check out bluebird.
+
+function asyncFunc(succeed=true, timeout=3000, resolveValue='Go ahead') {
+	return new Promise(function(resolve, reject) {
+   	setTimeout(function() {
+    	console.log('asyncFunc timeout done');
+      if (succeed) {
+        // This is how you fulfill the promise
+        resolve(resolveValue);
+      } else {
+        // You can also reject it. People recommend
+        // using the actual Error class.
+        reject(new Error('You shall not pass'));
+      }
+    }, timeout);
+  })
+}
 
 function promiseExample(shouldResolve=true) {
-  console.log('promiseExample called');
   // The Promise function takes in a resolver function, which
   // enables us to resolve or reject that promise based
   // on conditions we define.
-	var p1 = new Promise(
-    function(resolve, reject) {
-      // To give it some asynchronous behavior.
-      window.setTimeout(function() {
-        console.log('timeout ended');
-        if (shouldResolve) {
-          // This is how you fulfill the promise
-         	resolve('Go ahead');
-        } else {
-        	// You can also reject it.
-            reject('You shall not pass');
-        }
-      }, 3000);
-  	}
-  );
+	var p1 = asyncFunc(shouldResolve);
 
   // This defines the next steps to take based on
   // whether the promise was successfully resolved
-  // (callback in .then) or rejected (callback in .catch).
+  // (callback in .then) or rejected
+  // (second callback in .then or in this case,
+  // the callback in .catch).
   p1.then(function(value) {
     console.log('resolved with value', value);
   }).catch(function(reason) {
@@ -66,12 +76,96 @@ function promiseExample(shouldResolve=true) {
   });
 }
 
+function promiseRaceExample() {
+  // The Promise.race can be useful b/c it will use
+  // whatever promise you pass to it in the array
+  // that gets resolved or rejected first.
+  // This is useful for setting a timeout on something.
+  Promise.race([
+    // Pretend this is an external request that ends up
+    // taking 5 seconds.
+    asyncFunc(true, 5000),
+    // Can set up a timeout like this which enables
+    // use to just reject after 3 seconds.
+    asyncFunc(false, 3000)
+  ])
+  .then(function(result) {
+    console.log('Request suceeded!');
+  })
+  .catch(function() {
+    console.log('Request timed out');
+  });
+}
+
+// A closer look at how all the handlers work.
+function promiseHandlersExample() {
+  asyncFunc().then(function() {
+    throw new Error('boom');
+  })
+  .then(
+    // Resolve handler for preceding promise.
+    function(result) {
+      console.log("Hello World");
+    },
+    // Reject handler for preceding promise.
+    function(reason) {
+      console.log("Reject Handler with message", reason.message);
+    })
+  // Unless the preceding .then's callbacks return a Promise, a value,
+  // or throws an error, this .then will happen, because
+  // not returning anything explicitly treats it as if you had
+  // returned undefined.
+  .then(function() {
+    console.log("This .then still happens");
+  })
+  // Catches any errors thrown by the code that
+  // precedes it, except for the stuff in the
+  // revealing constructor.
+  .catch(function(error) {
+    console.log("General error handler executed with message", error.message);
+  });
+}
+
+function promiseAllExample() {
+	Promise.all([asyncFunc(true, 5000, 'firstAsync'), asyncFunc(true, 1000, 'secondAsync')])
+  	.then(function(result) {
+    	// The result will be an array of values from each
+    	// of our asyncFunc.
+    	console.log('promises finished with result', result);
+  	})
+  	.catch(function(error) {
+    	// If even one error happens in any of the
+    	// asyncFunc calls, then this will trigger
+    	// and .then will never be reached.
+    	console.log('an error occured', error.message);
+  	});
+}
+
 // Success example that invokes the callback
 // in .then
 // promiseExample();
+//
 // Rejection example that invokes the callback
 // in .catch
 // promiseExample(false);
+//
+// All together now...
+// promiseHandlersExample();
+//
+// Show off some other cool things.
+// The Promise.race
+// promiseRaceExample();
+//
+// Promise.all, another nifty thing to know.
+// promiseAllExample();
+
+
+// Coming in ES7 most likely: async and await.
+// Write your async code as if it was synchronous.
+// async function something() {
+//   let hmm = await asyncFunc();
+//   console.log(hmm);
+// }
   {% endcall %}
     </div>
   </div>
@@ -81,6 +175,21 @@ function promiseExample(shouldResolve=true) {
     <li class="text-small">
       <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank">
         https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
+      </a>
+    </li>
+    <li class="text-small">
+      <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank">
+        http://pouchdb.com/2015/05/18/we-have-a-problem-with-promises.html
+      </a>
+    </li>
+    <li class="text-small">
+      <a href="https://gist.github.com/nolanlawson/6ce81186421d2fa109a4" target="_blank">
+        https://gist.github.com/nolanlawson/6ce81186421d2fa109a4
+      </a>
+    </li>
+    <li class="text-small">
+      <a href="https://promisesaplus.com/" target="_blank">
+        https://promisesaplus.com/
       </a>
     </li>
   </ul>
