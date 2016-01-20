@@ -51,31 +51,42 @@ function exampleTwo() {
   // may later be retrieved via the same method.
   // This is a case where the Symbol here isn't
   // unique.
-  Symbol.for('myKey');
-	console.log('#2', Symbol.for('myKey'));
+  let s = Symbol.for('myKey');
+	console.log('#2', s === Symbol.for('myKey'));
 }
 
 // So, why use Symbols? They are useful in cases
 // where you need collision-free keys in an object,
-// since Symbols can be used as keys. For example,
-// you could use them as event names.
+// since Symbols can be used as keys.
+//
+// Can also create private properties from them.
 
 function exampleThree() {
-  const BREAKPOINT_CHANGE = Symbol();
+  const INTERNAL_PROP_1 = Symbol();
 
-  class BreakpointEvent {
-		constructor() {}
-    static get BREAKPOINT_CHANGE() {
-      return BREAKPOINT_CHANGE;
-  	}
+  class MyCoolClass {
+		constructor() {
+      // Can't easily do this externally since you
+      // can't get the value of INTERNAL_PROP_1.
+      //
+      // You could technically use a method
+      // to loop over all the symbols of an
+      // object and eventually grab the value
+      // that way though (Object.getOwnPropertySymbols).
+      this[INTERNAL_PROP_1] = 'kirby';
+    }
+    doSomethingCool() {
+      console.log(this[INTERNAL_PROP_1]);
+    }
   }
 
-  console.log(BreakpointEvent.BREAKPOINT_CHANGE);
+  new MyCoolClass().doSomethingCool();
 }
 
 // exampleOne();
 // exampleTwo();
 // exampleThree();
+
   {% endcall %}
     </div>
   </div>

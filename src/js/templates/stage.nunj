@@ -4,12 +4,12 @@
 {% include './slides/intro.nunj' %}
 {% include './slides/roadmap.nunj' %}
 {% include './slides/what-is-it.nunj' %}
-{% include './slides/where-using.nunj' %}
+{# {% include './slides/where-using.nunj' %} #}
 {% include './slides/basics.nunj' %}
 {# {% include './slides/hoisting.nunj' %} #}
 {% include './slides/let.nunj' %}
 {% include './slides/const.nunj' %}
-{% include './slides/const-why.nunj' %}
+{# {% include './slides/const-why.nunj' %} #}
 {% include './slides/strings.nunj' %}
 {% include './slides/arrows.nunj' %}
 {% include './slides/default-params.nunj' %}

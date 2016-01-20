@@ -17,6 +17,10 @@ export default class BabelREPL {
     this.$consoleReporter = this.$context.find('.js-console');
     this.$output = $context.find('.js-output');
     this.$toggleFullScreen = $context.find('.js-toggle-fs');
+    this.$toggleConsole = $context.find('.js-toggle-console');
+
+    this.$editorLive = $context.find('.js-editor-live');
+    this.$editorOutput = $context.find('.js-editor-output');
 
     // Create the CodeMirror editors which give us nice things
     // like line number, key maps, and syntax highlighting.
@@ -57,6 +61,22 @@ export default class BabelREPL {
 
       this.editor.refresh();
       this.editorCompiled.refresh();
+    });
+
+    this.$toggleConsole.click((event) => {
+      let $currentTarget = $(event.currentTarget);
+
+      if ($currentTarget.data('toggled')) {
+        // That means we need to hide the console again
+        this.$editorLive.removeClass('small-8').addClass('small-12');
+        this.$editorOutput.addClass('is-none');
+      } else {
+        this.$editorLive.removeClass('small-12').addClass('small-8');
+        this.$editorOutput.removeClass('is-none');
+      }
+
+      // Set the right value to toggled for next time.
+      $currentTarget.data('toggled', !$currentTarget.data('toggled'));
     });
   }
 
@@ -181,7 +201,7 @@ export default class BabelREPL {
       // and setting the console used as the capturingConsole
       // we created. It's kind of cool because it gives us control
       // over what to replace in our block of our code.
-      new Function('console', '$$', code)(capturingConsole, this.$output);
+      new Function('console', '$$', 'require', code)(capturingConsole, this.$output, DextersLab.requireModule);
     } catch (err) {
       //console.log('THERE IS A PROBLEM!!', code);
       error = err;

@@ -5,7 +5,7 @@
 
   <ul>
     <li class="text-normal slide">
-      Better dependency management
+      Built-in dependency management
     </li>
   </ul>
 
@@ -17,34 +17,47 @@
 // haven't set up a system telling it where all these
 // things are. Example is mainly to show how to do things.
 
-// How to make a module which can be imported.
+// How to make a module which can be imported:
+// Somewhere in src/js/lib/voltron.js
 //
-// The default export pattern
-// Example file path: './lib/ui/cool.js'
-export default class MyCoolClass {};
+// A named export.
+// export const DEFENDER_OF_THE_UNIVERSE = "That's me";
+//
+// The default export for this module.
+// export default class Voltron {
+//   constructor() {
 
-// How to import it.
-import CoolThing from './lib/ui/cool';
-new CoolThing();
+//   }
 
-// Import individual methods from a module.
-function methodOne() {}
-function methodTwo() {}
-module.exports = {
-	methodOne: methodOne,
-  methodTwo: methodTwo
-};
-import {methodOne, methodTwo} from './lib/ui/cool';
+//   form() {
+//     return `
+// Ready to form Voltron! Activate interlocks! Dyna-therms
+// connected. Infra-cells up; mega-thrusters are go!
+//`;
+//   }
+
+//   formBlazingSword() {
+//     return 'Time for some @$$kicking!';
+//   }
+// }
+
+// Then we can just import the Voltron class as:
+import MyClass from 'lib/voltron';
+// MyClass refers to the default export value,
+// which is Voltron.
+let volt = new MyClass();
+console.log(volt.form());
+console.log(volt.formBlazingSword());
+
+// Import individual methods or properties from a module.
+import {Voltron, DEFENDER_OF_THE_UNIVERSE} from 'lib/voltron';
+console.log(DEFENDER_OF_THE_UNIVERSE);
 
 // Import as alias. Useful for long names or method names
 // that collide with the namespace you're importing into.
-function methodOne() {}
-function methodTwo() {}
-module.exports = {
-	longMethodNameThatIsRidiculous: methodOne,
-  methodTwo: methodTwo
-};
-import {longMethodNameThatIsRidiculous as saneMethod} from './lib/ui/cool';
+import {default as Voltron2, DEFENDER_OF_THE_UNIVERSE as THATS_ME}
+	from 'lib/voltron';
+
   {% endcall %}
     </div>
   </div>

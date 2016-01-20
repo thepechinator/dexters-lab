@@ -13,6 +13,7 @@ import 'backbone.marionette';
 
 // Our stuff
 import 'sass/main.scss';
+import 'all';
 import BabelREPL from 'babel/repl';
 import Stage from 'views/stage';
 import SuperDeck from './views/super-deck';

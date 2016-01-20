@@ -7,7 +7,7 @@ var path = require('path');
 var settings = {
     entry: {
       main: "./src/js/main.js",
-      vendors: "./src/js/vendors.js"
+      vendors: "./src/js/vendors.js",
     },
     output: {
         path: __dirname + "/public/js",
