@@ -60,6 +60,13 @@ function exampleThree() {
 // Example 4
 // Shows how you can iterate over a set.
 function exampleFour() {
+  set.add(5);
+  set.add(1);
+  set.add(7);
+  set.add(8);
+  set.add(6);
+  set.add(5);
+
   // You can also iterate over a set.
   // Note how they get iterated in the right order.
   console.log('#4');
@@ -77,7 +84,7 @@ function exampleFour() {
 // Similar to WeakMap, they are not iterable and
 // the values are up for garbage collection if nothing
 // else references them.
-  {% endcall %}
+      {% endcall %}
     </div>
   </div>
 

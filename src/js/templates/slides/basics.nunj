@@ -5,7 +5,7 @@
 
   <ul>
     <li class="text-normal slide">
-      Implicit 'strict' mode
+      Implicit 'strict' mode for most things (modules, classes)
     </li>
     <li class="text-normal slide">
       declaration: let

@@ -8,10 +8,10 @@
       Use with
     </li>
     <li class="text-normal slide">
-      asynchronous requests
+      asynchronous code
     </li>
     <li class="text-normal slide">
-      deferred operations
+      good for flat indentation and exception handling
     </li>
   </ul>
 
