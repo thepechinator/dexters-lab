@@ -1,6 +1,10 @@
 $dock-bg: #13325D;
 $dock-inner-bg: #10294B;
 
+.is-editor-fs .dock {
+  display: none !important;
+}
+
 .dock.is-showing {
   .dock-list {
     display: block;

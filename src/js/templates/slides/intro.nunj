@@ -4,9 +4,26 @@
   {# TODO: special effects or something #}
   <div class="intro">
     <div class="intro-content">
-      <h1 class="text-megazord js-es6">
+      <div class="text-normal js-es6">
         ES6: Things You Should Know About the Next Version of JavaScript
-      </h1>
+      </div>
+      <br/>
+      <div>
+        <span style="font-size: 48px;">By</span>
+        <a style="font-size: 52px;" href="https://www.linkedin.com/in/thepechinator"
+          target="_blank">
+          Paul Pechin
+        </a>
+        <div class="usnews-logo">
+          <a href="http://www.usnews.com" target="_blank">
+            <img class="usnews-image" src="http://www.usnews.com/static/images/homepage-logo-292x70.png">
+          </a>
+        </div>
+      </div>
+      <br/>
+      <div class="text-small">
+        Navigate with arrow keys or quick jump using menu in top left corner.
+      </div>
     </div>
   </div>
 {% endblock %}

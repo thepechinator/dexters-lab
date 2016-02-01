@@ -52,6 +52,7 @@ export default class BabelREPL {
 
     this.$toggleFullScreen.click(() => {
       $context.toggleClass('is-full');
+      $('body').toggleClass('is-editor-fs');
 
       if ($context.hasClass('is-full')) {
         this.$toggleFullScreen.text('Exit Full Screen');
