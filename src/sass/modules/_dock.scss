@@ -1,0 +1,76 @@
+$dock-bg: #13325D;
+$dock-inner-bg: #10294B;
+
+.dock.is-showing {
+  .dock-list {
+    display: block;
+  }
+
+  .menu-title {
+    display: block;
+  }
+
+  .dock-menu-button {
+    background: $dock-bg;
+    width: 300px;
+  }
+}
+
+.dock-list {
+  position: fixed;
+  top: 35px;
+  bottom: 0;
+  height: 100%;
+  width: 300px;
+  padding: 1.5rem;
+  background: $dock-inner-bg;
+  z-index: 10;
+  overflow-y: auto;
+
+  display: none;
+}
+
+.dock-menu-button {
+  position: fixed;
+  z-index: 11;
+  // width: 32px;
+  height: 55px;
+  width: 75px;
+  // left: 25px;
+  // top: 17px;
+  top: 0;
+  left: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.menu-title {
+  height: 28px;
+  margin: 16px 0 0 15px;
+  float: left;
+  display: none;
+}
+
+.menu-icon {
+  width: 32px;
+  height: 28px;
+  margin: 17px 0 0 25px;
+  float: left;
+  // left: 25px;
+  // top: 17px;
+
+  span {
+    display: block;
+    width: 100%;
+    height: 4px;
+    border-radius: 1px;
+    margin: 5px 0;
+    background: #8FA1CA;
+    -webkit-transition: background .3s;
+    transition: background .3s;
+  }
+}
+
+.menu-icon:hover span {
+  background: #6e85ba;
+}

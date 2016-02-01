@@ -5,13 +5,18 @@
 
   <ul class="slide">
     <li class="text-normal">
-      <a href="https://github.com/thepechinator/dexters-lab" target="_blank">
-        This Repository. Play/learn.
+      <a href="http://exploringjs.com/es6/" target="_blank">
+        http://exploringjs.com/es6/ (book on ES6)
       </a>
     </li>
     <li class="text-normal">
       <a href="http://es6-features.org/" target="_blank">
         http://es6-features.org/
+      </a>
+    </li>
+    <li class="text-normal">
+      <a href="https://hacks.mozilla.org/category/es6-in-depth/" target="_blank">
+        https://hacks.mozilla.org/category/es6-in-depth/
       </a>
     </li>
     <li class="text-normal">

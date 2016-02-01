@@ -16,6 +16,7 @@ import 'sass/main.scss';
 import 'all';
 import BabelREPL from 'babel/repl';
 import Stage from 'views/stage';
+import Dock from 'views/dock';
 import SuperDeck from './views/super-deck';
 
 // effects stuff
@@ -28,6 +29,9 @@ Backbone.Marionette.Renderer.render = function( template, data ) {
 
 let stage = new Stage({el: $('.js-stage')});
 stage.render();
+
+let dock = new Dock({el: $('.js-dock')});
+dock.render();
 
 // A good case for the weakmap, since we need to keep track of
 // what component holds. Alternatives would be to somehow

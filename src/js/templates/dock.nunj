@@ -1,0 +1,16 @@
+<div class="dock js-dock-container">
+  <div class="dock-menu-button js-menu-button">
+    <div class="menu-icon">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="menu-title">
+      Sections
+    </div>
+  </div>
+
+  <div class="dock-list">
+    {% include './table-of-contents.nunj' %}
+  </div>
+</div>

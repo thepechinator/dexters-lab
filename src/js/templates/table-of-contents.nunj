@@ -1,0 +1,30 @@
+<ul>
+  {% set sections = [
+    ['What is it?', 12],
+    ['Basics', 16],
+    ['Let', 19],
+    ['Const', 23],
+    ['Template strings', 28],
+    ['Arrow functions', 32],
+    ['Enhanced object literals', 38],
+    ['Classes', 42],
+    ['Modules', 46],
+    ['For of', 49],
+    ['Symbols', 59],
+    ['Map, WeakMap', 63],
+    ['Set, WeakSet', 67],
+    ['Generators', 72],
+    ['Spread operator', 75],
+    ['Rest parameters', 78],
+    ['Destructuring', 83],
+    ['Promises', 89],
+    ['Why use ES6', 94],
+    ['More Resources', 96]
+  ] %}
+
+  {% for section in sections %}
+  <li class="text-small">
+    <a href="#slide-{{section[1]}}">{{section[0]}}</a>
+  </li>
+  {% endfor %}
+</ul>
