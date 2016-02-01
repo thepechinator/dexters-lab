@@ -15,15 +15,9 @@ To run
 ======
 
 - `npm install`
-- `webpack-dev-server`
+- `npm run start`
+- Navigate to http://localhost:8080/
 
 For Development
 ===============
-`webpack-dev-server --inline`
-
-TODO
-====
-
-- Make table of contents
-- Make module importing work.
-- Fix Symbol event usage
+`npm run dev`
